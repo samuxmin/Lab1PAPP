@@ -6,10 +6,6 @@
 package lab1g2;
 import java.time.LocalDate;
 
-/**
- *
- * @author 5967563
- */
 public class Usuario {
     private String nickname;
     private String nombre;
