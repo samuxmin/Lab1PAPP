@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package lab1g2;
+package clases;
 import java.time.LocalDate;
 
 public class Usuario {

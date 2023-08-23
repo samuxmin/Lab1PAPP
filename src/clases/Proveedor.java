@@ -1,4 +1,4 @@
-package lab1g2;
+package clases;
 
 import java.time.LocalDate;
 
@@ -10,5 +10,4 @@ public class Proveedor extends Usuario {
         this.descripcion = descripcion;
         this.email = email;
     }
-    
 }

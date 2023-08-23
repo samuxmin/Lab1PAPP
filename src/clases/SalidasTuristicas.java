@@ -1,4 +1,4 @@
-package lab1g2;
+package clases;
 
 public class SalidasTuristicas {
     private String nombreSalida;

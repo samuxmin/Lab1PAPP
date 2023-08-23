@@ -1,5 +1,5 @@
 
-package lab1g2;
+package clases;
 
 public class Departamento {
     private String nombreDepartamento;
