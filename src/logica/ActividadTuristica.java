@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity 
-public class ActividadTuristica {
+public class ActividadTuristica implements Serializable{
     
     @ManyToMany(mappedBy="actividadtur")
     private Collection<SalidasTuristicas> salidastur;    

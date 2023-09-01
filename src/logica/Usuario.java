@@ -6,8 +6,11 @@
 package logica;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.Column;
-
+import logica.Usuario;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -24,19 +27,22 @@ public class Usuario implements Serializable {
     private String nombre;
     private String apellido;
     
+    
+    //@GeneratedValue(strategy = GenerationType.TABLE)
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
     private String correo;
     private LocalDate fechaNacimiento;
     
     public Usuario(){};
     
-    public Usuario(String nick, String name, String apll, String mail, LocalDate fecNac){
+    public Usuario(String nick, String name, String apll, String correo, LocalDate fecNac){
         this.nickname = nick;
         this.nombre = name;
         this.apellido = apll;
-        this.correo = mail;
+        this.correo = correo;
         this.fechaNacimiento = fecNac;
+        usuariosMail = new HashMap<String, Usuario>();
+       
     }
     
     public String getNick(){
@@ -71,5 +77,44 @@ public class Usuario implements Serializable {
     }
     public void setFecha(LocalDate fecha){
         fechaNacimiento=fecha;
+    }
+
+    //protected Map<String, Usuario> usuariosMail;
+    protected Map<String, Usuario> usuariosMail = new HashMap<>();
+
+    private static Usuario instancia = null;
+ 
+    public static Usuario getinstance() {
+        if (instancia == null)
+            instancia = new Usuario();
+        return instancia;
+    }
+
+    public void addUsuario(Usuario usu) {
+        String mail = usu.getCorreo();
+        usuariosMail.put(mail, usu);
+    }
+
+    public Usuario obtenerUsuario(String mail) {
+        return ((Usuario) usuariosMail.get(mail));
+    }
+    
+    public Usuario obtenerUsuarioPorNick(String nick) {  //polpo
+        return ((Usuario) usuariosMail.get(nick));
+    }   
+    
+   
+    public Usuario[] getUsuarios() {
+        if (usuariosMail.isEmpty())
+            return null;
+        else {
+            Collection<Usuario> usrs = usuariosMail.values();
+            Object[] o = usrs.toArray();
+            Usuario[] usuarios = new Usuario[o.length];
+            for (int i = 0; i < o.length; i++) {
+                usuarios[i] = (Usuario) o[i];
+            }
+            return usuarios;
+        }
     }
 }

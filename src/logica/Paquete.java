@@ -14,8 +14,8 @@ import javax.persistence.OneToMany;
 public class Paquete implements Serializable{
     @Id
     private String nombre_paquete;
-    private String desc;
-   private LocalDate validez;
+    private String descr;
+    private LocalDate validez;
     private int descuento;
     
 //@ManyToMany(mappedBy="paquete")
@@ -29,9 +29,9 @@ public class Paquete implements Serializable{
 
     public Paquete() {
     }
-    public Paquete(String nombre_paquete, String desc, int descuento, LocalDate validez){
+    public Paquete(String nombre_paquete, String descri, int descuento, LocalDate validez){
     this.nombre_paquete=nombre_paquete;
-    this.desc=desc;
+    this.descr=descri;
     this.descuento=descuento;
     this.validez=validez;
     }

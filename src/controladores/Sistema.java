@@ -7,6 +7,8 @@ import excepciones.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import logica.Proveedor;
+import logica.Turista;
 
 public class Sistema implements  ISistema{
          private final EntityManager em;
@@ -27,8 +29,9 @@ public class Sistema implements  ISistema{
         System.out.println("este no");
     }
     
+    /*
     public void registrarUsuario(String nick,String name, String ap, String mail, LocalDate fecNac) throws UsuarioRepetidoException {
-        ManejadorUsuario mu = ManejadorUsuario.getinstance();
+        Usuario mu = Usuario.getinstance();
         Usuario u = mu.obtenerUsuario(mail);
         if (u != null)
             throw new UsuarioRepetidoException("El usuario " + mail + " ya esta registrado");
@@ -44,8 +47,49 @@ public class Sistema implements  ISistema{
         catch(Exception e){}
           
     }
+    */
+    
+   
+    public void registrarUsuario(String nick, String name, String ap, String mail, LocalDate fecNac, String tipoUsuario, String nacionalidad, String descripcion, String web) throws UsuarioRepetidoException {
+    Usuario mu = Usuario.getinstance();
+
+    Usuario u = mu.obtenerUsuario(mail);
+    if (u != null) {
+        throw new UsuarioRepetidoException("El usuario con el correo electrónico " + mail + " ya está registrado");
+    }
+
+    u = mu.obtenerUsuarioPorNick(nick);
+    if (u != null) {
+        throw new UsuarioRepetidoException("El nickname " + nick + " ya está en uso");
+    }
+
+
+    if (tipoUsuario.equals("turista")) {
+        Turista turista = new Turista(nick, name, ap, mail, fecNac, nacionalidad);
+        mu.addUsuario(turista);
+        
+    
+        try {
+            em.getTransaction().begin();
+            em.persist(turista);
+            em.getTransaction().commit();
+        } catch (Exception e) {}
+        
+    } else if (tipoUsuario.equals("proveedor")) {
+        Proveedor proveedor = new Proveedor(nick, name, ap, mail, fecNac, descripcion, web);
+        mu.addUsuario(proveedor);
+
+        try {
+            em.getTransaction().begin();
+            em.persist(proveedor);
+            em.getTransaction().commit();
+        } catch (Exception e) {}
+    }
+}
+
+    
     public DataUsuario verInfoUsuario(String mail) throws UsuarioNoExisteException {
-        ManejadorUsuario mu = ManejadorUsuario.getinstance();
+        Usuario mu = Usuario.getinstance();
         Usuario u = mu.obtenerUsuario(mail);
         if (u != null)
             return new DataUsuario(u.getNick() ,u.getNombre(), u.getApellido(), u.getCorreo(),  u.getFecnac());
@@ -56,7 +100,7 @@ public class Sistema implements  ISistema{
 
     @Override
     public DataUsuario[] getUsuarios() throws UsuarioNoExisteException {
-        ManejadorUsuario mu = ManejadorUsuario.getinstance();
+        Usuario mu = Usuario.getinstance();
         Usuario[] usrs = mu.getUsuarios();
 
         if (usrs != null) {
