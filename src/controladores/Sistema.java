@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import logica.ActividadTuristica;
 import logica.Departamento;
+import logica.Inscripcion_general;
 import logica.Paquete;
 import static logica.Proveedor.paqueteNombre;
 import logica.SalidasTuristicas;
@@ -24,6 +25,9 @@ public class Sistema implements ISistema {
     private final EntityManager em;
     private DataActividad[] dataActividades;
     private Departamento deptoSeleccionado;
+    private ActividadTuristica actividadSeleccionada;
+     private Turista turistaSeleccionado;
+      private SalidasTuristicas salidaSeleccionada;
 
     public Sistema() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lab1G2PU");
@@ -308,8 +312,8 @@ public void listarTurista(){
 
     public DataSalida datosSalida(String salida, String actividad, String nombreDepto) {
         // ManejadorDepto md = ManejadorDepto.getinstance();
-        Departamento d = Departamento.encontrarDepto(nombreDepto);
-        ActividadTuristica act = d.getActividadByNombre(actividad);
+        deptoSeleccionado = Departamento.encontrarDepto(nombreDepto);
+        ActividadTuristica act = deptoSeleccionado.getActividadByNombre(actividad);
         SalidasTuristicas s = act.getSalidaByNombre(salida);
         return s.devolverData();
 
@@ -317,13 +321,38 @@ public void listarTurista(){
 
     public DataSalida[] listarSalidasVigentes(String actividad) {
         DataSalida[] salidasVigentes = null;
-
-        ActividadTuristica act = deptoSeleccionado.getActividadByNombre(actividad);
-        SalidasTuristicas st[] = act.devolverSalidasVigentes();
-
+        this.actividadSeleccionada = deptoSeleccionado.getActividadByNombre(actividad);
+        SalidasTuristicas st[] = actividadSeleccionada.devolverSalidasVigentes();
+           if(st.length == 0){
+               return null;
+           }
         for (int i = 0; i < st.length; i++) {
             salidasVigentes[i] = st[i].devolverData();
         }
         return salidasVigentes;
+    }
+    
+
+    public DataUsuario[] listarTuristas() {
+        if (Usuario.usuariosMail.isEmpty()) {
+            return null;
+        }
+        Turista[] turistasArr = Turista.getTuristas();
+        DataUsuario[] dataTurs = new DataUsuario[turistasArr.length];
+        for (int i = 0; i < turistasArr.length; i++) {
+            dataTurs[i] = turistasArr[i].devolverData();
+        }
+        return dataTurs;
+    }
+    
+    public boolean inscripcionSalida(String mailTurista, String nombreSalida, int cantTurista,LocalDate fechaInscr){
+        boolean existe = false;
+        turistaSeleccionado = (Turista) Usuario.obtenerUsuario(mailTurista);
+        salidaSeleccionada = actividadSeleccionada.getSalidaByNombre(nombreSalida);
+        return salidaSeleccionada.estaInscritoUsuario(mailTurista);
+    }
+    
+    public void confirmarInscripcion(int cantTurista,int costogral){
+        Inscripcion_general nuevaInscripcion = new Inscripcion_general(cantTurista,costogral);
     }
 }

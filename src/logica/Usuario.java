@@ -23,15 +23,15 @@ import javax.persistence.GeneratedValue;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Usuario implements Serializable {
      @Column(unique = true) // Aquí indicamos que el nick debe ser único
-    private String nickname;
-    private String nombre;
-    private String apellido;
+    protected String nickname;
+    protected String nombre;
+    protected String apellido;
     
     
     //@GeneratedValue(strategy = GenerationType.TABLE)
     @Id
-    private String correo;
-    private LocalDate fechaNacimiento;
+    protected String correo;
+    protected LocalDate fechaNacimiento;
     
     public Usuario(){};
     

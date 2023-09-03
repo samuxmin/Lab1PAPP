@@ -55,6 +55,9 @@ public interface ISistema {
     public abstract DataSalida datosSalida(String salida, String actividad, String nombreDepto);
     
     public abstract DataSalida[] listarSalidasVigentes(String actividad);
+    public abstract DataUsuario[] listarTuristas();
+    public abstract boolean inscripcionSalida(String mailTurista, String idSalida, int cantTurista,LocalDate fechaInscr);
+        public abstract void confirmarInscripcion(int cantTurista,int costogral);
 }
 
     

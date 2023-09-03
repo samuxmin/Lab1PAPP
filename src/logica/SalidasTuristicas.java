@@ -18,14 +18,12 @@ public class SalidasTuristicas implements Serializable {
     @ManyToMany
     private Collection<Inscripcion_general> inscripciongeneral;
 
-
-
     @Id
     private String nombreSalida;
     private int cantidadMax;
-    
+
     @ManyToOne
-   @JoinColumn(name="ActividadT_Salida")
+    @JoinColumn(name = "ActividadT_Salida")
     private ActividadTuristica actividadAsociada;
 
     public Collection<Inscripcion_general> getInscripciongeneral() {
@@ -35,7 +33,6 @@ public class SalidasTuristicas implements Serializable {
     public void setInscripciongeneral(Collection<Inscripcion_general> inscripciongeneral) {
         this.inscripciongeneral = inscripciongeneral;
     }
-
 
     public String getNombreSalida() {
         return nombreSalida;
@@ -100,8 +97,7 @@ public class SalidasTuristicas implements Serializable {
     }
 
     public DataSalida devolverData() {
-        
-       
+
         // Arreglo de string de inscripciones para el datatype, sacado del toString de cada inscripcion de la coleccion
         DataInscripcionGeneral inscripciones[] = null;
         Inscripcion_general[] inscrArr = (Inscripcion_general[]) inscripciongeneral.toArray();
@@ -112,9 +108,18 @@ public class SalidasTuristicas implements Serializable {
             inscripciones[i] = inscrArr[i].devolverData();
         }
 
-        
         //crea el data con los arrays de String y los atributos pertinentes
         DataSalida data = new DataSalida(inscripciones, actividadAsociada.devolverData(), nombreSalida, cantidadMaximaTuristas, fechaAlta, fechaSalida);
         return data;
+    }
+
+    public boolean estaInscritoUsuario(String mailTurista) {
+        for (Inscripcion_general inscripcion : inscripciongeneral) {
+            if(inscripcion.tieneTurista(mailTurista)){
+                return true;
+            }
+        }
+
+        return false;
     }
 }

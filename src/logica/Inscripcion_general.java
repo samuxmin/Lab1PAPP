@@ -59,4 +59,13 @@ public class Inscripcion_general implements Serializable {
 
         return null;
     }
+
+    public boolean tieneTurista(String mailTurista) {
+        for (Turista t : turista) {
+            if(t.getCorreo() == mailTurista){
+                return true;
+            }
+        }
+        return false;
+    }
 }
