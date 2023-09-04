@@ -35,9 +35,15 @@ public class Inscripcion_general implements Serializable {
     private float costoGeneral;
     private int cantidad;
 
-    public Inscripcion_general(int cantidad, float costoGeneral) {
+    public Inscripcion_general(int cantidad, float costoGeneral, SalidasTuristicas salida, Collection<Turista> turista) {
         this.cantidad = cantidad;
         this.costoGeneral = costoGeneral;
+        this.salida = salida;
+        this.turista = turista;
+        salida.agregarInscripcionGral(this);
+        for (Turista t : turista) {
+            t.agregarInscripcionGral(this);  // Llamar a la función para cada turista en la colección
+        }
     }
 
     @Override
@@ -62,7 +68,7 @@ public class Inscripcion_general implements Serializable {
 
     public boolean tieneTurista(String mailTurista) {
         for (Turista t : turista) {
-            if(t.getCorreo() == mailTurista){
+            if (t.getCorreo() == mailTurista) {
                 return true;
             }
         }

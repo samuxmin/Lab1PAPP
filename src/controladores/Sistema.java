@@ -6,6 +6,8 @@ import datatypes.DataUsuario;
 import logica.Usuario;
 import java.time.LocalDate;
 import excepciones.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -26,8 +28,13 @@ public class Sistema implements ISistema {
     private DataActividad[] dataActividades;
     private Departamento deptoSeleccionado;
     private ActividadTuristica actividadSeleccionada;
-     private Turista turistaSeleccionado;
-      private SalidasTuristicas salidaSeleccionada;
+    private Turista turistaSeleccionado;
+    private SalidasTuristicas salidaSeleccionada;
+    private String nombre;
+    private String descripcion;
+    private int validez;
+    private int descuento;
+    private LocalDate alta;
 
     public Sistema() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lab1G2PU");
@@ -223,7 +230,7 @@ public void listarTurista(){
             if (usuario instanceof Proveedor) {
                 Proveedor proveedor = (Proveedor) usuario;
                 Departamento departamento = selectDepartamento(proveedor.getDepartamento().getNombreDepto()); // Obtiene el departamento del proveedor
-                Paquete paqueteSeleccionado = proveedor.selectPaquete(nombre_paquete); // Obtiene el paquete seleccionado
+                Paquete paqueteSeleccionado = selectPaquete(nombre_paquete); // Obtiene el paquete seleccionado
 
                 if (departamento != null && paqueteSeleccionado != null) {
                     for (ActividadTuristica actividad : departamento.getActTuristica()) {
@@ -256,19 +263,7 @@ public void listarTurista(){
     }
 
     public Paquete selectPaquete(String nombre_paquete) {
-        for (Map.Entry<String, Usuario> entry : Usuario.usuariosMail.entrySet()) {
-            Usuario usuario = entry.getValue();
-            if (usuario instanceof Proveedor) {
-                Proveedor proveedor = (Proveedor) usuario;//Casteo de proveedor de usuario 
-                for (Paquete paq : proveedor.getPaquete()) {
-                    if (paq.getNombre_paquete() == nombre_paquete) {
-                        return paq;
-                    }
-                }
-
-            }
-        }
-        return null;
+       return Paquete.getPaqueteByNombre(nombre_paquete);
     }
 
     public ActividadTuristica selectActividad(String nombre) {
@@ -323,15 +318,14 @@ public void listarTurista(){
         DataSalida[] salidasVigentes = null;
         this.actividadSeleccionada = deptoSeleccionado.getActividadByNombre(actividad);
         SalidasTuristicas st[] = actividadSeleccionada.devolverSalidasVigentes();
-           if(st.length == 0){
-               return null;
-           }
+        if (st.length == 0) {
+            return null;
+        }
         for (int i = 0; i < st.length; i++) {
             salidasVigentes[i] = st[i].devolverData();
         }
         return salidasVigentes;
     }
-    
 
     public DataUsuario[] listarTuristas() {
         if (Usuario.usuariosMail.isEmpty()) {
@@ -344,15 +338,41 @@ public void listarTurista(){
         }
         return dataTurs;
     }
-    
-    public boolean inscripcionSalida(String mailTurista, String nombreSalida, int cantTurista,LocalDate fechaInscr){
+
+    public boolean inscripcionSalida(String mailTurista, String nombreSalida, int cantTurista, LocalDate fechaInscr) {
         boolean existe = false;
         turistaSeleccionado = (Turista) Usuario.obtenerUsuario(mailTurista);
         salidaSeleccionada = actividadSeleccionada.getSalidaByNombre(nombreSalida);
         return salidaSeleccionada.estaInscritoUsuario(mailTurista);
     }
-    
-    public void confirmarInscripcion(int cantTurista,int costogral){
-        Inscripcion_general nuevaInscripcion = new Inscripcion_general(cantTurista,costogral);
+
+    public void confirmarInscripcion(int cantTurista, int costogral) {
+        Collection<Turista> turistas = new ArrayList<>();
+        turistas.add(turistaSeleccionado);
+
+        Inscripcion_general nuevaInscripcion = new Inscripcion_general(cantTurista, costogral, salidaSeleccionada, turistas);
+
+    }
+
+    public boolean crearPaquete(String nombre, String descripcion, int validez, int descuento, LocalDate alta) {
+
+        if (selectPaquete(nombre) == null) {
+            return false;
+        } else {
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.descuento = descuento;
+            this.validez = validez;
+            this.alta = alta;
+
+            return true;
+        }
+
+    }
+    public boolean confirmarCreacionPaquete(){
+           Paquete nuevoPaquete = new Paquete(nombre,descripcion,descuento,validez,alta);
+           Paquete.paquetes.put(nombre, nuevoPaquete);
+           return true;
+       
     }
 }

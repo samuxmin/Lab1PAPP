@@ -1,4 +1,5 @@
 package logica;
+
 import static controladores.Sistema.usuariosMail;
 import datatypes.DataUsuario;
 import java.io.Serializable;
@@ -14,31 +15,41 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import static logica.Usuario.usuariosMail;
 import datatypes.DataPaquete;
+import java.util.ArrayList;
 import static logica.Proveedor.paqueteNombre;
 
+@Entity
+public class Paquete implements Serializable {
 
-@Entity 
-public class Paquete implements Serializable{
+
+
+
     @Id
     private String nombre_paquete;
     private String descri;
-    private LocalDate validez;
+    private LocalDate alta;
+    private int validez;
     private int descuento;
+    public static Map<String, Paquete> paquetes = new HashMap(); 
 
-    public Paquete(String nombre_paquete, String descri, int descuento, LocalDate validez){
-    this.nombre_paquete=nombre_paquete;
-    this.descri=descri;
-    this.descuento=descuento;
-    this.validez=validez;
+    public Paquete(String nombre_paquete, String descri, int descuento,int validez, LocalDate alta) {
+        this.nombre_paquete = nombre_paquete;
+        this.descri = descri;
+        this.descuento = descuento;
+        this.validez = validez;
+        this.alta = alta;
+        this.actTuristica = new ArrayList<>();
     }
-    public Paquete(){}
-         
-    
-@OneToMany
+
+    public Paquete() {
+    }
+
+    @ManyToMany
     @JoinTable(name = "Paquete_ACT",
-            joinColumns=@JoinColumn(name="Paquete_nombre_paquete"),
-            inverseJoinColumns=@JoinColumn(name="ActividadTuristica_nombre"))
+            joinColumns = @JoinColumn(name = "Paquete_nombre_paquete"),
+            inverseJoinColumns = @JoinColumn(name = "ActividadTuristica_nombre"))
     private Collection<ActividadTuristica> actTuristica;
+    
 
     public Collection<ActividadTuristica> getActTuristica() {
         return actTuristica;
@@ -47,25 +58,14 @@ public class Paquete implements Serializable{
     public void setActTuristica(Collection<ActividadTuristica> actTuristica) {
         this.actTuristica = actTuristica;
     }
-    
 
-   public static void setInstancia(Paquete instancia) {
-        Paquete.instancia = instancia;
-    }
+
     public String getNombre_paquete() {
         return nombre_paquete;
     }
-     
-    private static Paquete instancia = new Paquete();
-    
-    public static Paquete getinstance() {
-        return instancia;
+
+
+    public static Paquete getPaqueteByNombre(String nombre_paquete) {
+       return paquetes.get(nombre_paquete);
     }
-    
-    
-    Paquete paquete = Paquete.getinstance(); 
-     
-    
-     
-  
 }

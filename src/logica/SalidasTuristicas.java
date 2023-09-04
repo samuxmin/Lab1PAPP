@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -94,6 +95,7 @@ public class SalidasTuristicas implements Serializable {
         this.cantidadMaximaTuristas = cantidadMaximaTuristas;
         this.fechaAlta = fechaAlta;
         this.fechaSalida = fechaSalida;
+        inscripciongeneral = new ArrayList();
     }
 
     public DataSalida devolverData() {
@@ -121,5 +123,9 @@ public class SalidasTuristicas implements Serializable {
         }
 
         return false;
+    }
+
+    public void agregarInscripcionGral(Inscripcion_general nuevaInscripcion) {
+        inscripciongeneral.add(nuevaInscripcion);
     }
 }

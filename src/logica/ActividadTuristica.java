@@ -13,9 +13,7 @@ import javax.persistence.ManyToOne;
 
 @Entity 
 public class ActividadTuristica implements Serializable{
-    
-    private Collection<SalidasTuristicas> salidastur;    
-    
+    private Collection<SalidasTuristicas> salidastur;
    
     private Proveedor proveedor;
     @Id

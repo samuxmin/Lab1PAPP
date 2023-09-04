@@ -58,6 +58,10 @@ public interface ISistema {
     public abstract DataUsuario[] listarTuristas();
     public abstract boolean inscripcionSalida(String mailTurista, String idSalida, int cantTurista,LocalDate fechaInscr);
         public abstract void confirmarInscripcion(int cantTurista,int costogral);
+        
+        
+       public abstract boolean crearPaquete(String nombre, String descripcion, int validez, int descuento,LocalDate alta);
+       
 }
 
     

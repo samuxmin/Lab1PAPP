@@ -37,6 +37,8 @@ public class Turista extends Usuario {
     public Turista(String nick, String name, String apll, String mail, LocalDate fecNac, String nacionalidad) {
         super(nick, name, apll, mail, fecNac);
         this.nacionalidad = nacionalidad;
+        inscripciongeneral = new ArrayList();
+        inscripcionpaquete = new ArrayList();
     }
 
     public String getNacionalidad() {
@@ -84,6 +86,10 @@ public class Turista extends Usuario {
         return new DataUsuario(nickname,nombre,apellido,correo,fechaNacimiento,nacionalidad,null,null);
 
     
+    }
+
+    public void agregarInscripcionGral(Inscripcion_general nuevaInscripcion) {
+      inscripciongeneral.add(nuevaInscripcion);
     }
 }
 

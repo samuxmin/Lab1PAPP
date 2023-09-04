@@ -18,25 +18,24 @@ import logica.Paquete;
 public class Departamento implements Serializable{
     @Id
     private String nombreDepartamento;
-    public static Map<String, Departamento> departamentos;
-     private Map<String, ActividadTuristica> actividades;
+    public static Map<String, Departamento> departamentos = new HashMap<String, Departamento>();
+     private Map<String, ActividadTuristica> actividades ;
      
     public static Departamento encontrarDepto(String nombreDpto) {
         return departamentos.get(nombreDpto);
-        
     }
 
     public Departamento() {
-        
+   
         actividades = new HashMap<String, ActividadTuristica>();
-        departamentos = new HashMap<String, Departamento>();
+
     }
     
     public Departamento(String nombreDepartamento){
         this.nombreDepartamento=nombreDepartamento;
         
         actividades = new HashMap<String, ActividadTuristica>();
-        departamentos = new HashMap<String, Departamento>();}
+    }
     
     public String getNombreDepto(){
     return nombreDepartamento;

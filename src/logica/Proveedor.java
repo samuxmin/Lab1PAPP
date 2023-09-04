@@ -21,7 +21,6 @@ public class Proveedor extends Usuario {
             joinColumns=@JoinColumn(name="Proveedor_correo"),
             inverseJoinColumns=@JoinColumn(name="ActividadTuristica_nombre"))
     private Collection<ActividadTuristica> actTuristica;
-
     public Collection<ActividadTuristica> getActTuristica() {
         return actTuristica;
     }
@@ -29,12 +28,6 @@ public class Proveedor extends Usuario {
     public void setActTuristica(Collection<ActividadTuristica> actTuristica) {
         this.actTuristica = actTuristica;
     }
-    
-    @OneToMany
-    @JoinTable(name = "Proveedor_Paquete",
-            joinColumns=@JoinColumn(name="Proveedor_correo"),
-            inverseJoinColumns=@JoinColumn(name="Paquete_nombre_paquete"))
-    private Collection<Paquete> paquete;
     
     @ManyToOne
             @JoinColumn(name="Dept_nombredepto")
@@ -59,14 +52,6 @@ public class Proveedor extends Usuario {
         this.web=web;
     }
 
-    public Collection<Paquete> getPaquete() {
-        return paquete;
-    }
-  
-            
-    public void setPaquete(Collection<Paquete> paquete) {
-        this.paquete = paquete;
-    }
     
     public String getWeb() {
         return web;
@@ -109,21 +94,6 @@ public class Proveedor extends Usuario {
       public static Map<String, Paquete> paqueteNombre = new HashMap<>();
 
   
-    public Paquete selectPaquete(String nombre_paquete){
-        for (Map.Entry<String, Usuario> entry : Usuario.usuariosMail.entrySet()) {
-        Usuario usuario = entry.getValue();
-        if (usuario instanceof Proveedor) {
-            Proveedor proveedor = (Proveedor) usuario;//Casteo de proveedor de usuario 
-         for(Paquete paq :proveedor.getPaquete()){
-             if(paq.getNombre_paquete()==nombre_paquete){
-             return  paq;
-             }
-         }
-           
-        }
-    }
-       return null;
- }
     
     public ActividadTuristica selectActividad(String nombre){
         for (Map.Entry<String, Usuario> entry : Usuario.usuariosMail.entrySet()) {
