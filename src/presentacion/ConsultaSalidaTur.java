@@ -55,7 +55,8 @@ comboBoxSalida.setSelectedItem(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Seleccione el Departamento de la Actividad");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 280, 20));
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 430, 20));
 
         textoDatosSalida.setEditable(false);
         textoDatosSalida.setColumns(20);

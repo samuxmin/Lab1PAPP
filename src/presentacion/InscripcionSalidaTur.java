@@ -71,7 +71,7 @@ public class InscripcionSalidaTur extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Seleccione el Departamento de la Actividad");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 280, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 450, 20));
 
         panelInscripcion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -161,7 +161,7 @@ public class InscripcionSalidaTur extends javax.swing.JInternalFrame {
         });
         panelInscripcion.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 140, -1));
 
-        getContentPane().add(panelInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 420, 310));
+        getContentPane().add(panelInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 420, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

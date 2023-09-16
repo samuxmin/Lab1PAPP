@@ -15,8 +15,8 @@ public class ConsultaPaqueteActividadesTuristicas extends javax.swing.JInternalF
     String paquete;
     String [] strings=new String[]{};
     String nombreact;
-    String stringsA;
-    
+    //String stringsA;
+    String[] stringsA;
     ActividadTuristica [] act=new ActividadTuristica []{};
     
     public ConsultaPaqueteActividadesTuristicas() {
@@ -188,6 +188,8 @@ public class ConsultaPaqueteActividadesTuristicas extends javax.swing.JInternalF
         if(jsi.isSelected()){
         ListarACT.setVisible(true);   
         selectACT.setVisible(true);
+                    ListarACT.setModel(new DefaultComboBoxModel<>(stringsA));
+            //ListarACT.setVisible(true); // Hacer visible el ComboBox
         }else {
         ListarACT.setVisible(false);
         selectACT.setVisible(false);
@@ -226,7 +228,7 @@ public class ConsultaPaqueteActividadesTuristicas extends javax.swing.JInternalF
         act = sys.listarActPaquete(paq);
 
         if (act != null && act.length > 0) {
-            String[] stringsA = new String[act.length];
+            stringsA = new String[act.length];
 
             for (int i = 0; i < act.length; i++) {
                 Object[] rowData1 = { act[i].getNombre(), act[i].getDescripcion(), act[i].getDuracionHoras(), act[i].getCostoPorTurista(), act[i].getCiudad(), act[i].getFechaAlta() };
@@ -235,8 +237,7 @@ public class ConsultaPaqueteActividadesTuristicas extends javax.swing.JInternalF
             }
 
             // Actualizar el ComboBox ListarACT con las actividades
-            ListarACT.setModel(new DefaultComboBoxModel<>(stringsA));
-            ListarACT.setVisible(true); // Hacer visible el ComboBox
+
         } else {
             ListarACT.setModel(new DefaultComboBoxModel<>()); // Si no hay actividades, vaciar el ComboBox
             ListarACT.setVisible(false);
