@@ -8,7 +8,7 @@ import logica.ActividadTuristica;
 import logica.Departamento;
 import logica.SalidasTuristicas;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2023-09-16T19:19:32", comments="EclipseLink-2.7.12.v20230209-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2023-09-16T19:48:10", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(Proveedor.class)
 public class Proveedor_ extends Usuario_ {
 

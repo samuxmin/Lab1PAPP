@@ -51,12 +51,7 @@ public class Turista extends Usuario {
         this.nacionalidad = nacionalidad;
     }
 
-    /*
-    public void addTurista(Usuario usu) {//DESPUES DE PROBAR QUE FUNCIONA AGREGAR LOS GETTER
-        //String mail = usu.getCorreo();
-        usuariosMail.put("turista1@mail.com", new Turista("nick2", "NombreTurista1", "ApellidoTurista1", "turista1@mail.com", LocalDate.of(1985, 9, 20), "CubaLibre"));
-    }
-     */
+
     public Usuario obtenerTurista(String mail) {
         return ((Usuario) usuariosMail.get(mail));
     }

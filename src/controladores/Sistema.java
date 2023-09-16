@@ -97,23 +97,7 @@ public class Sistema implements ISistema {
     }
 
 
-    /*
-public void listarTurista(){
-        
-        DataUsuario datatur=null;
-        //Turista tur=null;
-        Map<String, DataUsuario> auxTurista = new HashMap<>();
 
-        //tur = (Turista) auxTurista;
-        
-        datatur = getTurista();
-        
-        for (Map.Entry<String, DataUsuario> entry : auxTurista.entrySet()){
-            System.out.println("Nombre"+datatur.getNombre()+" Apellido"+datatur.getApellido()+" Correo"+datatur.getCorreo()+" Nickname"+datatur.getNick()+" Fecha de Nacimiento"+datatur.getFecNac()+" Nacionalidad"+datatur.getNacionalidad());  
-        } 
-
-}
-     */
     public Map<String, DataUsuario> getTurista() {
         turistaMail.clear(); // Limpia el mapa turistaMail antes de agregar usuarios
 
@@ -450,19 +434,7 @@ public void listarTurista(){
         return dataProveedor;
     }
 
-    //LISTA TODOS LOS TURISTAS
-    //LISTA TODOS LOS DEPARTAMENTOS
-    /*
-        public void listarDepartamentos(){
-            Usuario mu = Usuario.getinstance();
-            Map<String, Usuario> usuariosMap=mu.getUsuariosMail();
-            for (Map.Entry<String, Usuario> entry1 : usuariosMap.entrySet()){
-                Usuario usuario = entry1.getValue();
-                if (usuario instanceof Proveedor) {
-                    System.out.println(((Proveedor)usuario).getDepartamento().getNombreDepto());  
-                } 
-            } 
-        } */
+
     public String[] listarDepartamentos() {
         Collection<Departamento> deptos = Departamento.departamentos.values();
         String[] nombresDepto = new String[deptos.size()];
@@ -517,62 +489,6 @@ public void listarTurista(){
         }
     }
 
-    /* VERSION DE REGISTRAR USUARIO QUE USA LA BD (TERMINADA)
-    
-     public void registrarUsuario(String nick, String name, String ap, String mail, LocalDate fecNac, String tipoUsuario, String nacionalidad, String descripcion, String web, String imagenPerfil) throws UsuarioRepetidoException {
-        
-    // Verificar si el usuario ya existe en la base de datos por nickname
-    if (usuarioExisteBDPorNick(nick)) {
-        throw new UsuarioRepetidoException("El nickname " + nick + " ya está en uso");
-    }
-    // Verificar si el usuario ya existe en la base de datos por correo
-    if (usuarioExisteBD(mail)) {
-        throw new UsuarioRepetidoException("El correo " + mail + " ya está en uso");
-    }
-    
-
-    // Crear un nuevo usuario
-    Usuario nuevoUsuario = new Usuario(nick, name, ap, mail, fecNac, imagenPerfil);
-
-    
-    if (imagenPerfil != null && !imagenPerfil.isEmpty()) {
-        nuevoUsuario.setImagenPerfil(imagenPerfil);
-    }
-    
-    try {
-        em.getTransaction().begin();
-        em.persist(nuevoUsuario);
-        em.getTransaction().commit();
-    } catch (Exception e) {
-        // Manejar excepciones si es necesario
-    }
-
-    if (tipoUsuario.equals("turista")) {
-        Turista turista = new Turista(nick, name, ap, mail, fecNac, nacionalidad, imagenPerfil);
-        Usuario.addUsuario(turista);
-
-        try {
-            em.getTransaction().begin();
-            em.persist(turista);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            // Manejar excepciones si es necesario
-        }
-
-    } else if (tipoUsuario.equals("proveedor")) {
-        Proveedor proveedor = new Proveedor(nick, name, ap, mail, fecNac, descripcion, web, imagenPerfil);
-        Usuario.addUsuario(proveedor);
-
-        try {
-            em.getTransaction().begin();
-            em.persist(proveedor);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            // Manejar excepciones si es necesario
-        }
-    }
-}
-     */
     public void modificarDatosUsuario(String mail, String nuevoNombre, String nuevoApellido, LocalDate nuevaFechaNacimiento, String nuevaNacionalidad, String nuevaDescripcion, String nuevoSitioWeb) throws UsuarioNoExisteException {
 
         Usuario usuario = Usuario.obtenerUsuario(mail);
@@ -630,35 +546,7 @@ public void listarTurista(){
         return correosProveedores;
     }
 
-    /*
-    // Función para verificar si el usuario existe en la base de datos por correo
-    public boolean usuarioExisteBD(String correo) {
-        try {
-            // Intenta obtener un usuario por su correo utilizando el EntityManager existente
-            Usuario usuario = em.find(Usuario.class, correo);
-
-            // Si el usuario no es nulo, significa que existe en la base de datos
-            return usuario != null;
-        } catch (Exception e) {
-            // Manejar excepciones si es necesario
-            return false; // O retorna false en caso de error
-        }
-    }
-
-    // Función para verificar si el usuario existe en la base de datos por nickname
-    public boolean usuarioExisteBDPorNick(String nick) {
-        try {
-            // Intenta obtener un usuario por su nickname utilizando el EntityManager existente
-            Usuario usuario = em.find(Usuario.class, nick);
-
-            // Si el usuario no es nulo, significa que existe en la base de datos
-            return usuario != null;
-        } catch (Exception e) {
-            // Manejar excepciones si es necesario
-            return false; // O retorna false en caso de error
-        }
-    }
-     */
+  
     public String[] listarPaquetesArreglo() {
         Collection<Paquete> paquetesjovani = Paquete.paquetes.values();
         String[] paq = new String[paquetesjovani.size()];
@@ -714,15 +602,7 @@ public void listarTurista(){
         // No es necesario actualizar los mapas en este punto, ya que los datos en la base de datos se han actualizado correctamente.
     }
 
-    /*
-    public boolean DepartamentoExisteBD(String nombre) {
-        try {
-            Departamento depto = em.find(Departamento.class, nombre);
-            return depto != null;
-        } catch (Exception d) {
-            return false;
-        }
-    }*/
+  
     public boolean confirmarCreacionPaquete(String nombre, String descripcion, int validez, int descuento, LocalDate alta) {
         Paquete nuevoPaquete = new Paquete(nombre, descripcion, descuento, validez, alta);
         Paquete.paquetes.put(nombre, nuevoPaquete);
@@ -736,22 +616,7 @@ public void listarTurista(){
         return true;
     }
 
-    /*
-    public boolean crearPaquete(String nombre, String descripcion, int validez, int descuento, LocalDate alta) {
-
-        if (selectPaquete(nombre) != null) {
-            return false;
-        } else {
-            this.nombre = nombre;
-            this.descripcion = descripcion;
-            this.descuento = descuento;
-            this.validez = validez;
-            this.alta = alta;
-
-            return true;
-        }
-
-    }*/
+   
     public boolean AgregarActividadPaquete(ActividadTuristica act, Paquete paq) {
         paq.addActividad(act);
         //System.out.print(act.getNombre()+paq.getNombre_paquete());
@@ -797,12 +662,7 @@ public void listarTurista(){
                 for (Paquete p : paqquery) {
                     Paquete.paquetes.put(p.getNombre_paquete(), p);
                 }
-                //PAQUETES
 
-                // Aquí puedes hacer lo que necesites con la lista de actividades obtenidas
-                // Por ejemplo, puedes agregarlas al departamento o realizar alguna otra operación.
-                // Luego, puedes utilizar las actividades como sea necesario, por ejemplo, agregarlas al departamento:
-                //  d.getActTuristica().addAll(actividades);
             }
 
         }

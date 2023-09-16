@@ -24,7 +24,7 @@ import javax.persistence.GeneratedValue;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Usuario implements Serializable {
-     @Column(unique = true) // Aquí indicamos que el nick debe ser único
+     @Column(unique = true) 
     protected String nickname;
     protected String nombre;
     protected String apellido;
@@ -123,19 +123,7 @@ public class Usuario implements Serializable {
     public static Usuario obtenerUsuario(String mail) {  
         return ((Usuario) usuariosMail.get(mail));
     }
-    /*
-    public static Usuario obtenerUsuarioBD(String mail, EntityManager em) {
-    try {
-        // Intenta obtener un usuario por su correo utilizando el EntityManager proporcionado
-        Usuario usuario = em.find(Usuario.class, mail);
 
-        // Si el usuario no es nulo, significa que existe en la base de datos
-        return usuario;
-    } catch (Exception e) {
-        // Manejar excepciones si es necesario
-        return null; // O retorna null en caso de error
-    }
-}*/
 
     
     public static Usuario obtenerUsuarioPorNick(String nick) {  //polpo

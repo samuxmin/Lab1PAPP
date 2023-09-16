@@ -207,7 +207,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
             arreglo = new String[turista.getSalidasInscritas().size()];
             for (SalidasTuristicas salida : turista.getSalidasInscritas()) {
                 arreglo[i] = salida.getNombreSalida();
-                System.out.println(salida.getNombreSalida());
+                
                 i++;
             }
                     DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(arreglo);
@@ -243,18 +243,16 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
                 arreglo = new String[turista.getSalidasInscritas().size()];
                 for (SalidasTuristicas salida : turista.getSalidasInscritas()) {
                     arreglo[i] = salida.getNombreSalida();
-                    System.out.println(salida.getNombreSalida());
+                   
                     i++;
                 }
             }
             int j = 0;
             if (usuario instanceof Proveedor) {
                 Proveedor proveedor = (Proveedor) usuario;
-                System.out.print(jComboBox1.getSelectedItem().toString());
+                
                 arreglo2 = sys.listarSalidasActividad(jComboBox1.getSelectedItem().toString());
-                for (i = 0; i < arreglo.length; i++) {
-                    System.out.print(arreglo[i] + "\n");
-                }
+
             }
         }
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(arreglo2);
@@ -336,7 +334,6 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         tableModel.addRow(rowData);
     }
 
-// Agrega lógica para llenar la tabla de actividades turísticas del proveedor
     private void llenarTablaActividadesProveedor(Proveedor proveedor, DefaultTableModel actividadesModel) {
         for (ActividadTuristica actividad : proveedor.getActTuristica()) {
             if (jComboBox1.getSelectedItem() == actividad.getNombre()) {
@@ -351,7 +348,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         }
     }
 
-// Agrega lógica para llenar la tabla de salidas asociadas al proveedor
+
     private void llenarTablaSalidasAsociadasProveedor(Proveedor proveedor, DefaultTableModel salidasModel) {
         for (SalidasTuristicas salida : proveedor.getSalidasAsociadas()) {
             if (jComboBox2.getSelectedItem() == salida.getNombreSalida()) {
@@ -367,7 +364,6 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         }
     }
 
-// Agrega lógica para llenar la tabla de salidas a las que se inscribió el turista
     private void llenarTablaSalidasInscritasTurista(Turista turista, DefaultTableModel salidasModel) {
         for (SalidasTuristicas salida : turista.getSalidasInscritas()) {
             if (jComboBox2.getSelectedItem() == salida.getNombreSalida()) {

@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import logica.Inscripcion_general;
 import logica.Inscripcion_paquete;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2023-09-16T19:19:32", comments="EclipseLink-2.7.12.v20230209-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2023-09-16T19:48:10", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(Turista.class)
 public class Turista_ extends Usuario_ {
 

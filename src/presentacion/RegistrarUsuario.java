@@ -352,7 +352,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             }
         }
 
-        // Llamar a sys.registrarUsuario solo si no se lanzó ninguna excepción
+       
         sys.registrarUsuario(nickname, nombre, apellido, correo, fecNac, tipo, nacionalidad, descripción, sitioWeb,imagenP);
         jLabel1_ERROR.setText("Usuario registrado con éxito.");
         imagenP=null;
@@ -370,22 +370,11 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         dispose();
-    }   
+    }  
+    
     /*
     private void jButton_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_imagenActionPerformed
-        
-    JFileChooser fileChooser = new JFileChooser(new File(System.getProperty("user.home") + "/Desktop/fotos"));
-    
-    int result = fileChooser.showOpenDialog(this);
-    
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File selectedFile = fileChooser.getSelectedFile();
-        imagenP = selectedFile.getAbsolutePath();
-        // Puedes mostrar la ruta de la imagen en algún campo de texto o etiqueta para que el usuario la vea
-        // Por ejemplo: txt_RutaImagen.setText(imagenP);
-        // También puedes cargar la imagen en un componente de vista previa si lo deseas.
-    }
-        
+   
     }//GEN-LAST:event_jButton_imagenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -395,33 +384,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     */
     
     
-    /*
-    private void jButton_imagenActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        
-        JFileChooser jFileChooser = new JFileChooser();
-        
-        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG & PNG","jpg","png");
-        
-        jFileChooser.setFileFilter(filtrado);
-        
-        int respuesta = jFileChooser.showOpenDialog(this);
-        
-        if(respuesta == JFileChooser.APPROVE_OPTION){
-        
-            imagenP= jFileChooser.getSelectedFile().getPath();
-            
-                   
-            ImageIcon imagenIcon = new ImageIcon(imagenP);
-            jLabel_imagen.setIcon(imagenIcon);
-        
-        
-            jLabel_imagen.setSize(imagenIcon.getIconWidth(), imagenIcon.getIconHeight());
-            
-        }
-        
-    } 
-    
-    */
+  
  
     
         private void jButton_imagenActionPerformed(java.awt.event.ActionEvent evt) {                                               
