@@ -11,6 +11,7 @@
     <class>logica.Proveedor</class>
     <class>logica.SalidasTuristicas</class>
     <class>logica.Turista</class>
+    <class>logica.Categoria</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Turismo"/>
       <property name="javax.persistence.jdbc.user" value="tecnologo"/>

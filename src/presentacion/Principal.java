@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
  * @author amadeus
  */
 public class Principal extends javax.swing.JFrame {
+
     ISistema sys;
+
     /**
      * Creates new form Principal
      */
@@ -44,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuSistema = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        menuUsuario = new javax.swing.JMenu();
+        RegistrarCategoria = new javax.swing.JMenu();
         itemAltaUsuario = new javax.swing.JMenuItem();
         itemAltaActividad = new javax.swing.JMenuItem();
         itemAltaSalida = new javax.swing.JMenuItem();
@@ -53,6 +55,8 @@ public class Principal extends javax.swing.JFrame {
         itemAgregarActPaquete = new javax.swing.JMenuItem();
         itemAltaDepartamento = new javax.swing.JMenuItem();
         itemModificarUsuario = new javax.swing.JMenuItem();
+        CambiarEstadoActividad = new javax.swing.JMenuItem();
+        itemRegistrarCategoria = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         itemConsultaUsuario = new javax.swing.JMenuItem();
         itemConsultaActividad = new javax.swing.JMenuItem();
@@ -82,7 +86,7 @@ public class Principal extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         menuSistema.setText("Sistema");
@@ -97,10 +101,10 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuSistema);
 
-        menuUsuario.setText("Registros");
-        menuUsuario.addActionListener(new java.awt.event.ActionListener() {
+        RegistrarCategoria.setText("Registros");
+        RegistrarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuUsuarioActionPerformed(evt);
+                RegistrarCategoriaActionPerformed(evt);
             }
         });
 
@@ -110,7 +114,7 @@ public class Principal extends javax.swing.JFrame {
                 itemAltaUsuarioActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemAltaUsuario);
+        RegistrarCategoria.add(itemAltaUsuario);
 
         itemAltaActividad.setText("Alta de Actividad Turística");
         itemAltaActividad.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +122,7 @@ public class Principal extends javax.swing.JFrame {
                 itemAltaActividadActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemAltaActividad);
+        RegistrarCategoria.add(itemAltaActividad);
 
         itemAltaSalida.setText("Alta de Salida Turística");
         itemAltaSalida.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +130,7 @@ public class Principal extends javax.swing.JFrame {
                 itemAltaSalidaActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemAltaSalida);
+        RegistrarCategoria.add(itemAltaSalida);
 
         itemInscripcionSalida.setText("Inscripción a Salida Turística");
         itemInscripcionSalida.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +138,7 @@ public class Principal extends javax.swing.JFrame {
                 itemInscripcionSalidaActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemInscripcionSalida);
+        RegistrarCategoria.add(itemInscripcionSalida);
 
         itemAltaPaquete.setText("Crear Paquete de Actividades Turísticas");
         itemAltaPaquete.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +146,7 @@ public class Principal extends javax.swing.JFrame {
                 itemAltaPaqueteActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemAltaPaquete);
+        RegistrarCategoria.add(itemAltaPaquete);
 
         itemAgregarActPaquete.setText("Agregar Actividad Turística a Paquete");
         itemAgregarActPaquete.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +154,7 @@ public class Principal extends javax.swing.JFrame {
                 itemAgregarActPaqueteActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemAgregarActPaquete);
+        RegistrarCategoria.add(itemAgregarActPaquete);
 
         itemAltaDepartamento.setText("Alta de Departamento");
         itemAltaDepartamento.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +162,7 @@ public class Principal extends javax.swing.JFrame {
                 itemAltaDepartamentoActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemAltaDepartamento);
+        RegistrarCategoria.add(itemAltaDepartamento);
 
         itemModificarUsuario.setText("Modificar Datos de Usuarios");
         itemModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -166,9 +170,25 @@ public class Principal extends javax.swing.JFrame {
                 itemModificarUsuarioActionPerformed(evt);
             }
         });
-        menuUsuario.add(itemModificarUsuario);
+        RegistrarCategoria.add(itemModificarUsuario);
 
-        jMenuBar1.add(menuUsuario);
+        CambiarEstadoActividad.setText("Aceptar / Rechazar Actividad");
+        CambiarEstadoActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CambiarEstadoActividadActionPerformed(evt);
+            }
+        });
+        RegistrarCategoria.add(CambiarEstadoActividad);
+
+        itemRegistrarCategoria.setText("Registrar Categoría");
+        itemRegistrarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistrarCategoriaActionPerformed(evt);
+            }
+        });
+        RegistrarCategoria.add(itemRegistrarCategoria);
+
+        jMenuBar1.add(RegistrarCategoria);
 
         jMenu1.setText("Consultas");
 
@@ -226,21 +246,6 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUsuarioActionPerformed
-        //jInternalFrame1.setVisible(true);
-    }//GEN-LAST:event_menuUsuarioActionPerformed
-
-    private void itemAltaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaUsuarioActionPerformed
-        RegistrarUsuario registro = new RegistrarUsuario();
-        jDesktopPane1.add(registro);
-        registro.setVisible(true);
-        try {
-            registro.setMaximum(true);
-        } catch (Exception e) {
-        }
-        //registro.setMaximum(true);
-    }//GEN-LAST:event_itemAltaUsuarioActionPerformed
-
     private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1ComponentShown
@@ -255,16 +260,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemConsultaUsuarioActionPerformed
 
-    private void itemModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarUsuarioActionPerformed
-        ModificarUsuario modUsuario = new ModificarUsuario();
-        jDesktopPane1.add(modUsuario);
-        modUsuario.setVisible(true);
-        try {
-            modUsuario.setMaximum(true);
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_itemModificarUsuarioActionPerformed
-
     private void itemConsultaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultaActividadActionPerformed
 
         ConsultaActividad ca = new ConsultaActividad();
@@ -275,26 +270,6 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_itemConsultaActividadActionPerformed
-
-    private void itemAltaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaActividadActionPerformed
-        AltaActividadTuristica ast = new AltaActividadTuristica();
-        jDesktopPane1.add(ast);
-        ast.setVisible(true);
-        try {
-            ast.setMaximum(true);
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_itemAltaActividadActionPerformed
-
-    private void itemAgregarActPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarActPaqueteActionPerformed
-        AgregarActividadTuristicaPaquete AgregarA = new AgregarActividadTuristicaPaquete();
-        jDesktopPane1.add(AgregarA);
-        AgregarA.setVisible(true);
-        try {
-            AgregarA.setMaximum(true);
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_itemAgregarActPaqueteActionPerformed
 
     private void itemConsultaPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConsultaPaqueteActionPerformed
         ConsultaPaqueteActividadesTuristicas ConsultaP = new ConsultaPaqueteActividadesTuristicas();
@@ -316,25 +291,39 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemConsultaSalidaActionPerformed
 
-    private void itemInscripcionSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInscripcionSalidaActionPerformed
-        InscripcionSalidaTur inscr = new InscripcionSalidaTur();
-        jDesktopPane1.add(inscr);
-        inscr.setVisible(true);
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         try {
-            inscr.setMaximum(true);
-        } catch (Exception e) {
+            sys.cargarDatosPrueba();
+        } catch (UsuarioRepetidoException ex) {
+            //Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Datos de prueba ya cargados");
+            JOptionPane.showMessageDialog(null, "Datos de prueba ya cargados");
         }
-    }//GEN-LAST:event_itemInscripcionSalidaActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void itemAltaPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaPaqueteActionPerformed
-        CrearPaqueteActividades crearPaq = new CrearPaqueteActividades();
-        jDesktopPane1.add(crearPaq);
-        crearPaq.setVisible(true);
+    private void RegistrarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarCategoriaActionPerformed
+   
+    }//GEN-LAST:event_RegistrarCategoriaActionPerformed
+
+    private void CambiarEstadoActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarEstadoActividadActionPerformed
+        EstadoActTuristica aceptarAct = new EstadoActTuristica();
+        jDesktopPane1.add(aceptarAct);
+        aceptarAct.setVisible(true);
         try {
-            crearPaq.setMaximum(true);
+            aceptarAct.setMaximum(true);
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_itemAltaPaqueteActionPerformed
+    }//GEN-LAST:event_CambiarEstadoActividadActionPerformed
+
+    private void itemModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModificarUsuarioActionPerformed
+        ModificarUsuario modUsuario = new ModificarUsuario();
+        jDesktopPane1.add(modUsuario);
+        modUsuario.setVisible(true);
+        try {
+            modUsuario.setMaximum(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_itemModificarUsuarioActionPerformed
 
     private void itemAltaDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaDepartamentoActionPerformed
         AltaDepartamento dep = new AltaDepartamento();
@@ -346,6 +335,36 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemAltaDepartamentoActionPerformed
 
+    private void itemAgregarActPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarActPaqueteActionPerformed
+        AgregarActividadTuristicaPaquete AgregarA = new AgregarActividadTuristicaPaquete();
+        jDesktopPane1.add(AgregarA);
+        AgregarA.setVisible(true);
+        try {
+            AgregarA.setMaximum(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_itemAgregarActPaqueteActionPerformed
+
+    private void itemAltaPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaPaqueteActionPerformed
+        CrearPaqueteActividades crearPaq = new CrearPaqueteActividades();
+        jDesktopPane1.add(crearPaq);
+        crearPaq.setVisible(true);
+        try {
+            crearPaq.setMaximum(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_itemAltaPaqueteActionPerformed
+
+    private void itemInscripcionSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInscripcionSalidaActionPerformed
+        InscripcionSalidaTur inscr = new InscripcionSalidaTur();
+        jDesktopPane1.add(inscr);
+        inscr.setVisible(true);
+        try {
+            inscr.setMaximum(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_itemInscripcionSalidaActionPerformed
+
     private void itemAltaSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaSalidaActionPerformed
         AltaSalidaTuristica sal = new AltaSalidaTuristica();
         jDesktopPane1.add(sal);
@@ -356,21 +375,46 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_itemAltaSalidaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itemAltaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaActividadActionPerformed
+        AltaActividadTuristica ast = new AltaActividadTuristica();
+        jDesktopPane1.add(ast);
+        ast.setVisible(true);
         try {
-            sys.cargarDatosPrueba();
-        } catch (UsuarioRepetidoException ex) {
-            //Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Datos de prueba ya cargados");
-            JOptionPane.showMessageDialog(null, "Datos de prueba ya cargados");
+            ast.setMaximum(true);
+        } catch (Exception e) {
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itemAltaActividadActionPerformed
+
+    private void itemAltaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAltaUsuarioActionPerformed
+        RegistrarUsuario registro = new RegistrarUsuario();
+        jDesktopPane1.add(registro);
+        registro.setVisible(true);
+        try {
+            registro.setMaximum(true);
+        } catch (Exception e) {
+        }
+        //registro.setMaximum(true);
+    }//GEN-LAST:event_itemAltaUsuarioActionPerformed
+
+    private void itemRegistrarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarCategoriaActionPerformed
+                //jInternalFrame1.setVisible(true);
+        
+        AltaCategoria categoria = new AltaCategoria();
+        jDesktopPane1.add(categoria);
+        categoria.setVisible(true);
+        try {
+            categoria.setMaximum(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_itemRegistrarCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem CambiarEstadoActividad;
+    private javax.swing.JMenu RegistrarCategoria;
     private javax.swing.JMenuItem itemAgregarActPaquete;
     private javax.swing.JMenuItem itemAltaActividad;
     private javax.swing.JMenuItem itemAltaDepartamento;
@@ -383,6 +427,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemConsultaUsuario;
     private javax.swing.JMenuItem itemInscripcionSalida;
     private javax.swing.JMenuItem itemModificarUsuario;
+    private javax.swing.JMenuItem itemRegistrarCategoria;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -392,6 +437,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuSistema;
-    private javax.swing.JMenu menuUsuario;
     // End of variables declaration//GEN-END:variables
 }

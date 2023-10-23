@@ -136,6 +136,10 @@ public class AgregarActividadTuristicaPaquete extends javax.swing.JInternalFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        actPaquete = sys.selectActividadBD(sact.getSelectedItem().toString());
+        nombreDepto = nombreD.getSelectedItem().toString();
+        nombrePaquete = listarP.getSelectedItem().toString();
+
         if (nombrePaquete == null || nombreDepto == null || actPaquete == null) {
             confirmar.setText("Faltan campos.");
 
@@ -145,6 +149,7 @@ public class AgregarActividadTuristicaPaquete extends javax.swing.JInternalFrame
             Paquete paque = sys.selectPaquete(nombrePaquete);
             if(!paque.tieneActividad(actPaquete.getNombre())){
             sys.AgregarActividadPaquete(actPaquete, paque);
+            //sys.AltaCategoriaPaq(actPaquete.getNombre(), nombrePaquete);
             confirmar.setText("Registrado con exito.");
             }else{
                 confirmar.setText("La actividad ya pertenece al paquete");
@@ -166,7 +171,10 @@ public class AgregarActividadTuristicaPaquete extends javax.swing.JInternalFrame
         }
         eleccion = sact.getSelectedItem().toString();
         actPaquete = sys.selectActividad(sact.getSelectedItem().toString());
-        se.setText("Actividad turistica " + actPaquete.getNombre() + " seleccionado.");
+        if(actPaquete!=null){
+            se.setText("Actividad turistica " + actPaquete.getNombre() + " seleccionado.");
+        }
+        
 
 
     }//GEN-LAST:event_sactActionPerformed

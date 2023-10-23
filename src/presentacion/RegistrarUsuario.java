@@ -30,6 +30,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     public String sitioWeb;
     public String imagenP;
     public String tipo;
+    public String Password;
 
     ISistema sys;
     
@@ -315,6 +316,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     nombre = txt_Nombre.getText();
     apellido = txt_Apellido.getText();
     correo = txt_Correo.getText();
+    Password="123";
 
     try {
         
@@ -353,7 +355,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         }
 
         // Llamar a sys.registrarUsuario solo si no se lanzó ninguna excepción
-        sys.registrarUsuario(nickname, nombre, apellido, correo, fecNac, tipo, nacionalidad, descripción, sitioWeb,imagenP);
+        sys.registrarUsuario(nickname, nombre, apellido, correo, fecNac, tipo, nacionalidad, descripción, sitioWeb,imagenP, Password);
         jLabel1_ERROR.setText("Usuario registrado con éxito.");
         imagenP=null;
         jLabel_imagen.setVisible(false);

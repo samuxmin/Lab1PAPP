@@ -34,6 +34,10 @@ public class DataSalida {
         this.actividadtur = actividadtur;
     }
 
+    public int getCantInscritos() {
+        return cantInscritos;
+    }
+
     public String getNombreSalida() {
         return nombreSalida;
     }

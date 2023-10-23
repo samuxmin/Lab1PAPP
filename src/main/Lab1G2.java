@@ -4,6 +4,8 @@ import presentacion.Principal;
 import controladores.Fabrica;
 import controladores.ISistema;
 import excepciones.UsuarioRepetidoException;
+import java.util.List;
+import logica.ActividadTuristica;
 
 
 public class Lab1G2 {
@@ -20,7 +22,7 @@ public class Lab1G2 {
         Principal programa = new Principal();
         programa.setVisible(true);
         programa.setLocationRelativeTo(null);
-        
+        List<ActividadTuristica> actquery =sys.getAllActsFromBD();
     }
 
 }

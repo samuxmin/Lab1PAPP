@@ -2,10 +2,10 @@ package presentacion;
 
 import controladores.Fabrica;
 import controladores.ISistema;
+import datatypes.DataUsuario;
 import excepciones.UsuarioNoExisteException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import logica.Usuario;
 
 
 public class ModificarUsuario extends javax.swing.JInternalFrame {
@@ -146,41 +146,46 @@ public class ModificarUsuario extends javax.swing.JInternalFrame {
    
     private void jButton_BUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BUSCARActionPerformed
 
-    correo = txt_correo.getText();
-
-    Usuario usuario = Usuario.obtenerUsuario(correo); 
-
-    if (usuario != null) {
-        //muestra info usuario
-        txt_nombre_actual.setText(usuario.getNombre()); 
-        txt_apellido_actual.setText(usuario.getApellido()); 
-        txt_fecnac_actual.setText(usuario.getFecnac().toString()); 
-        
-        //borra el mensaje de error anterior si es que no existía antes
-        jLabel_mensaje.setText("");
-        
-        //habilita campos
-        txt_nombre.setEnabled(true);
-        txt_apellido.setEnabled(true);
-        txt_fecnac.setEnabled(true);
-        
-         txt_nombre.setText(usuario.getNombre()); 
-        txt_apellido.setText(usuario.getApellido()); 
-        txt_fecnac.setText(usuario.getFecnac().toString()); 
-    } else {
-        //si no existe el usuario buscado
-        jLabel_mensaje.setText("El usuario no existe");
-        //limpia los campos de texto porque no se encontró el usuario
-        txt_nombre_actual.setText(""); 
-        txt_apellido_actual.setText(""); 
-        txt_fecnac_actual.setText(""); 
-        
-        //deshabilita los campos si no lo encuentra al usuario
-        txt_nombre.setEnabled(false);
-        txt_apellido.setEnabled(false);
-        txt_fecnac.setEnabled(false);
-        
-    }
+        try {
+            correo = txt_correo.getText();
+            
+            
+            DataUsuario info= sys.verInfoUsuario(correo);
+            
+            
+            
+            if (sys.obtenerCorreoUsuario(correo)) {
+                
+                //muestra info usuario
+                txt_nombre_actual.setText(info.getNombre());
+                txt_apellido_actual.setText(info.getApellido());
+                txt_fecnac_actual.setText(info.getFecNac().toString());
+                
+                //borra el mensaje de error anterior si es que no existía antes
+                jLabel_mensaje.setText("");
+                
+                //habilita campos
+                txt_nombre.setEnabled(true);
+                txt_apellido.setEnabled(true);
+                txt_fecnac.setEnabled(true);
+                
+                txt_nombre.setText(info.getNombre());
+                txt_apellido.setText(info.getApellido());
+                txt_fecnac.setText(info.getFecNac().toString());
+            } 
+        } catch (UsuarioNoExisteException ex) {
+                           //si no existe el usuario buscado
+                jLabel_mensaje.setText("El usuario no existe");
+                //limpia los campos de texto porque no se encontró el usuario
+                txt_nombre_actual.setText("");
+                txt_apellido_actual.setText("");
+                txt_fecnac_actual.setText("");
+                
+                //deshabilita los campos si no lo encuentra al usuario
+                txt_nombre.setEnabled(false);
+                txt_apellido.setEnabled(false);
+                txt_fecnac.setEnabled(false);
+        }
     
     }//GEN-LAST:event_jButton_BUSCARActionPerformed
 
@@ -219,9 +224,9 @@ public class ModificarUsuario extends javax.swing.JInternalFrame {
 
     correo = txt_correo.getText();
 
-    Usuario usuario = Usuario.obtenerUsuario(correo); // usa el EntityManager
-
-    if (usuario != null) {
+    //Usuario usuario = Usuario.obtenerUsuario(correo); // usa el EntityManager
+        
+    if (sys.obtenerCorreoUsuario(correo)) {
         nombre = txt_nombre.getText();
         apellido = txt_apellido.getText();
         String fechaNacimientoTexto = txt_fecnac.getText();

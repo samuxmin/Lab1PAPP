@@ -1,5 +1,7 @@
 package logica;
 
+import controladores.Fabrica;
+import controladores.ISistema;
 import datatypes.DataUsuario;
 import java.time.LocalDate;
 import java.io.Serializable;
@@ -25,7 +27,8 @@ public class Proveedor extends Usuario {
 
 
     public Collection<ActividadTuristica> getActTuristica() {
-        return actTuristica;
+        ISistema sys = new Fabrica().getSistema();
+        return sys.getActDeProvFromBD(this.correo);
     }
 
     public void setActTuristica(Collection<ActividadTuristica> actTuristica) {
@@ -51,8 +54,8 @@ public class Proveedor extends Usuario {
     public Proveedor(){
         super();
     };
-    public Proveedor(String nick, String name, String apll, String mail, LocalDate fecNac,String descripcion,String web,String imagenP){
-        super( nick,  name,  apll,  mail, fecNac, imagenP);
+    public Proveedor(String nick, String name, String apll, String mail, LocalDate fecNac,String descripcion,String web,String imagenP,String password){
+        super( nick,  name,  apll,  mail, fecNac, imagenP,password);
         this.descripcion = descripcion;
         this.web=web;
     }
@@ -149,7 +152,7 @@ public class Proveedor extends Usuario {
         
     }   
     public DataUsuario devolverData(){
-        DataUsuario dt = new DataUsuario(nickname,nombre,apellido,correo,fechaNacimiento,null,web,descripcion);
+        DataUsuario dt = new DataUsuario(nickname,nombre,apellido,correo,fechaNacimiento,null,web,descripcion,imagenPerfil);
         dt.setTipo("Proveedor");
         return dt;
     }
@@ -182,7 +185,7 @@ public static Proveedor[] getProveedores(){
         salidasAsociadas=new ArrayList();
         
         
-        
+        getActTuristica();
         for(ActividadTuristica act : actTuristica){
             salidasAsociadas.addAll(act.getSalidastur());
         }

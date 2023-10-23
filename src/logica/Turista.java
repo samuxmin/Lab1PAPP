@@ -36,8 +36,24 @@ public class Turista extends Usuario {
     }
 
     ;
-    public Turista(String nick, String name, String apll, String mail, LocalDate fecNac, String nacionalidad, String imagenP) {
-        super(nick, name, apll, mail, fecNac, imagenP);
+
+    public Collection<Inscripcion_general> getInscripciongeneral() {
+        return inscripciongeneral;
+    }
+
+    public void setInscripciongeneral(Collection<Inscripcion_general> inscripciongeneral) {
+        this.inscripciongeneral = inscripciongeneral;
+    }
+
+    public Collection<Inscripcion_paquete> getInscripcionpaquete() {
+        return inscripcionpaquete;
+    }
+
+    public void setInscripcionpaquete(Collection<Inscripcion_paquete> inscripcionpaquete) {
+        this.inscripcionpaquete = inscripcionpaquete;
+    }
+    public Turista(String nick, String name, String apll, String mail, LocalDate fecNac, String nacionalidad, String imagenP, String password) {
+        super(nick, name, apll, mail, fecNac, imagenP,password);
         this.nacionalidad = nacionalidad;
         inscripciongeneral = new ArrayList();
         inscripcionpaquete = new ArrayList();
@@ -72,7 +88,7 @@ public class Turista extends Usuario {
     }
 
     public DataUsuario devolverData() {
-        DataUsuario dt = new DataUsuario(nickname, nombre, apellido, correo, fechaNacimiento, nacionalidad, null, null);
+        DataUsuario dt = new DataUsuario(nickname, nombre, apellido, correo, fechaNacimiento, nacionalidad, null, null,imagenPerfil);
         dt.setTipo("Turista");
         return dt;
     }
@@ -116,7 +132,9 @@ public class Turista extends Usuario {
     
     return salidasInscritas;
 }
-    
+     public void agregarInscripcionPaq(Inscripcion_paquete nuevaInscripcion) {
+       inscripcionpaquete.add(nuevaInscripcion);
+    }
     
 }
 

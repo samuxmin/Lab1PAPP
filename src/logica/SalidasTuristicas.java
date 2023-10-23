@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,7 +32,16 @@ public class SalidasTuristicas implements Serializable {
 
     private int cantidadMaximaTuristas;
     private String lugar;
+    LocalTime hora;
+    String imagenSalida;
 
+    public String getImagenSalida() {
+        return imagenSalida;
+    }
+
+    public void setImagenSalida(String imagenSalida) {
+        this.imagenSalida = imagenSalida;
+    }
     public String getLugar() {
         return lugar;
     }
@@ -104,13 +114,15 @@ public class SalidasTuristicas implements Serializable {
         this.fechaSalida = fechaS;
         this.fechaAlta = Sistema.getInstance().fechaSistema;
     }
-  public SalidasTuristicas(String nombre, String lugar, int cantidad, LocalDate fechaS, ActividadTuristica act, LocalDate fechaA) {
+  public SalidasTuristicas(String nombre, String lugar, int cantidad, LocalDate fechaS, ActividadTuristica act, LocalDate fechaA, String imagen, LocalTime hora) {
         this.actividadAsociada = act;
         this.nombreSalida = nombre;
         this.cantidadMaximaTuristas = cantidad;
         this.fechaSalida = fechaS;
         this.fechaAlta = fechaA;
         this.lugar=lugar;
+        this.imagenSalida=imagen;
+        this.hora=hora;
     }
      public DataSalida devolverData() {
 

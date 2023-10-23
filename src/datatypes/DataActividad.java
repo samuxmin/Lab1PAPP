@@ -5,6 +5,7 @@
 package datatypes;
 
 import java.time.LocalDate;
+import logica.Departamento;
 
 /**
  *
@@ -16,6 +17,7 @@ public class DataActividad {
     private String departamento;
     
     private String proveedor;
+    private String imagen;
     private String nombre;
     private String descripcion;
     private int duracionHoras;
@@ -27,9 +29,9 @@ public class DataActividad {
         return salidasTur;
     }
 
-    public DataActividad(String[] salidasTur, String departamento, String proveedor, String nombre, String descripcion, int duracionHoras, double costoPorTurista, String ciudad, LocalDate fechaAlta) {
+    public DataActividad(String[] salidasTur, Departamento departamento, String proveedor, String nombre, String descripcion, int duracionHoras, double costoPorTurista, String ciudad, LocalDate fechaAlta, String imagen) {
         this.salidasTur = salidasTur;
-        this.departamento = departamento;
+        this.departamento = departamento.getNombreDepartamento();
         this.proveedor = proveedor;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -37,10 +39,15 @@ public class DataActividad {
         this.costoPorTurista = costoPorTurista;
         this.ciudad = ciudad;
         this.fechaAlta = fechaAlta;
+        this.imagen=imagen;
     }
 
     public void setSalidasTur(String[] salidasTur) {
         this.salidasTur = salidasTur;
+    }
+    
+    public String getImagen() {
+        return imagen;
     }
 
     public String getDepartamento() {

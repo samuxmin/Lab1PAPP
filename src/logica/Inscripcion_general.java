@@ -5,6 +5,8 @@ import datatypes.DataSalida;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,7 +23,7 @@ public class Inscripcion_general implements Serializable {
     private static long cantInscr = 1;
     @Id
     private Long id;
-
+    private String tipo;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
         name = "turista_inscripcion_general", // Nombre de la nueva tabla
@@ -30,6 +32,8 @@ public class Inscripcion_general implements Serializable {
     )
     private Collection<Turista> turista;
 
+    
+    
     @ManyToOne
     @JoinColumn(name = "salidaInscripcion", referencedColumnName = "nombreSalida")
     private SalidasTuristicas salida;
@@ -40,15 +44,24 @@ public class Inscripcion_general implements Serializable {
     private LocalDate fechaCompra;
     private double costoGeneral;
     private int cantidad;
+    
+
+    public static long getCantInscr() {
+        return cantInscr;
+    }
+
+    public static void setCantInscr(long cantInscr) {
+        Inscripcion_general.cantInscr = cantInscr;
+    }
 
 
-        public Inscripcion_general(int cantidad, double costoGeneral, SalidasTuristicas salida, Collection<Turista> turista) {
-          this.id = cantInscr;
-          cantInscr++;
+        public Inscripcion_general(Long id, int cantidad, double costoGeneral, SalidasTuristicas salida, Collection<Turista> turista) {
+          this.id = id;
         this.cantidad = cantidad;
         this.costoGeneral = (cantidad * salida.getActividadAsociada().getCostoPorTurista());
         this.salida = salida;
         this.turista = turista;
+        this.tipo= tipo;
 
     }
     @Override

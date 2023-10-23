@@ -13,6 +13,8 @@ import datatypes.DataActividad;
 import datatypes.DataUsuario;
 import datatypes.DataSalida;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -29,11 +31,16 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
     boolean excepcionLanzada2=false;
     String[] strings;
     String[] strings2;
+    String[] stringCat;
+    String[] arregloCat;
+    ArrayList<String> eleccionesCategoria = new ArrayList<>();
 
     public AltaActividadTuristica() {
         sys = new Fabrica().getSistema();
         strings = sys.listarDepartamentos();
         strings2 = sys.listarCorreosProveedores();
+        stringCat= sys.listarCategorias();
+        arregloCat= new String[stringCat.length];
         initComponents();
        // this.setSize(440, 440);
         jLabel3.setVisible(false);
@@ -80,6 +87,9 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jLabelCat = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -100,39 +110,39 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 150, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 150, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 150, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 150, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 150, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 150, -1));
 
         jLabel3.setText("Nombre Actividad:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 150, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 150, -1));
 
         jLabel4.setText("Descripcion:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
         jLabel5.setText("Duracion:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         jLabel6.setText("Costo:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jLabel7.setText("Fecha (año-mes-dia):");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 150, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 150, -1));
 
         confirmar.setText("confirmar");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,8 +150,8 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
                 confirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 460, 30));
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 460, 30));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(strings2));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -165,17 +175,31 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
 
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 150, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 150, -1));
 
         jLabel9.setText("Ciudad:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+
+        jLabelCat.setText("Seleccione las Categorias:");
+        getContentPane().add(jLabelCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 20));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(stringCat));
+        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 150, -1));
+
+        jButton3.setText("Añadir Categoria");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,6 +214,10 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
             jComboBox2.setVisible(false);
             jLabel1.setVisible(false);
             jLabel2.setVisible(false);
+            jLabelCat.setVisible(false);
+            jButton3.setVisible(false);
+            jComboBox3.setVisible(false);
+
                  
             jLabel3.setVisible(true);
             jLabel4.setVisible(true);
@@ -218,7 +246,7 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
             excepcionLanzada=false;
             excepcionLanzada2=false;
             jLabel8.setVisible(false);
-            jLabel9.setVisible(false);
+            jLabel9.setVisible(true);
             jLabel3.setVisible(true);
             jLabel4.setVisible(true);
             jLabel5.setVisible(true);
@@ -276,17 +304,19 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
                     jLabel8.setVisible(true);
                 }
                 else{ 
-                    boolean actRegistrada=sys.AltaActividadTuristica(correoProv, nombreAct, descripcion, duracion, costo,nombreDepto, fechaA, ciudad);
+                    boolean actRegistrada=sys.AltaActividadTuristica(correoProv, nombreAct, descripcion, duracion, costo,nombreDepto, fechaA, ciudad,eleccionesCategoria,"noimagenAct");                    
                     if(actRegistrada){
-                    jLabel8.setText("Actividad ya ingresada, ingrese otra actividad o ciere la ventana");
+                    jLabel8.setText("Actividad ya ingresada, ingrese otra actividad o cierre la ventana");
                     jLabel8.setVisible(true);
                     }
                     else{
                         jLabel8.setText("Actividad Registrada con Exito");
                         jLabel8.setVisible(true);
+                        //boolean actcategorizada=sys.AltaCategoriaAct2(nombreAct, eleccionesCategoria);
                     }
                 }
             }
+
 
     }//GEN-LAST:event_confirmarActionPerformed
 
@@ -310,6 +340,21 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jComboBox3.getSelectedItem() != null) {
+            String categoriaSeleccionada = jComboBox3.getSelectedItem().toString();
+
+            if (!eleccionesCategoria.contains(categoriaSeleccionada)) {
+                eleccionesCategoria.add(categoriaSeleccionada);
+                jLabel8.setVisible(true);
+                jLabel8.setText("Categoría ingresada exitosamente");
+            } else {
+                jLabel8.setVisible(true);
+                jLabel8.setText("Categoría ya ingresada");
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     
     
     
@@ -318,8 +363,10 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
     private javax.swing.JButton confirmar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -329,6 +376,7 @@ public class AltaActividadTuristica extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelCat;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

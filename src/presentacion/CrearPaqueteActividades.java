@@ -195,7 +195,7 @@ public class CrearPaqueteActividades extends javax.swing.JInternalFrame {
                         
         }else{
             mensajeLabel.setText("Creado exitosamente");
-        sys.confirmarCreacionPaquete(nombrePaq, descripcionPaq, validez, descuento, fechaAlta);
+        sys.confirmarCreacionPaquete(nombrePaq, descripcionPaq, validez, descuento, fechaAlta,"noimagenPaq");
         }
     }//GEN-LAST:event_botonCrearActionPerformed
 

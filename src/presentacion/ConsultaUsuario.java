@@ -2,19 +2,18 @@ package presentacion;
 
 import controladores.Fabrica;
 import controladores.ISistema;
+import datatypes.DataActividad;
 import datatypes.DataSalida;
 import datatypes.DataUsuario;
 import excepciones.UsuarioNoExisteException;
 import java.awt.Image;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import logica.Usuario;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
-import logica.ActividadTuristica;
-import logica.Proveedor;
-import logica.SalidasTuristicas;
-import logica.Turista;
+import logica.Usuario;
 
 public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
@@ -25,11 +24,16 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     public String[] arreglo = new String[]{};
     public String[] arreglo2 = new String[]{};
     public String[] aux = new String[]{};
+    DataUsuario usr;
+
+    /*
     Turista tur;
     Proveedor prov;
-
+     */
     public ConsultaUsuario() {
         sys = new Fabrica().getSistema();
+        Usuario.usuariosMail.clear();
+        sys.getAllUsersFromBD();
         initComponents();
         this.setSize(700, 300);
 
@@ -50,8 +54,8 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         jTable_actividades = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_salidas = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboboxActividad = new javax.swing.JComboBox<>();
+        comboboxSalida = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -149,21 +153,21 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 640, 80));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboboxActividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        comboboxActividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboboxActividadActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 330, -1));
+        getContentPane().add(comboboxActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 330, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        comboboxSalida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        comboboxSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                comboboxSalidaActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 330, -1));
+        getContentPane().add(comboboxSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 330, -1));
 
         jLabel2.setText("Ingrese la actividad:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
@@ -174,7 +178,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    /*
     private void jComboBox_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_correoActionPerformed
         if (jComboBox_correo.getSelectedItem() == null) {
             return;
@@ -184,7 +188,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         if (Usuario.obtenerUsuario(correo) instanceof Proveedor) {
             Proveedor prov = (Proveedor) Usuario.obtenerUsuario(correo);
             String arregloActsProv[] = sys.listarActividadesProveedor(prov);
-            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(arregloActsProv);
+            DefaultComboBoxModel<String> model =new DefaultComboBoxModel<>(arregloActsProv);
             jComboBox1.setModel(model);
         }
 
@@ -229,12 +233,68 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jComboBox_correoActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    */
+    private void jComboBox_correoActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            if (jComboBox_correo.getSelectedItem() == null) {
+                return;
+            }
+            correo = jComboBox_correo.getSelectedItem().toString();
+
+            usr = sys.verInfoUsuario(correo);
+            //System.out.println(usr.getNombre());
+            /*
+            if (usr == null) {
+                return;
+            }*/
+            if (usr.getTipo().equals("Proveedor")) {
+
+                String arregloActsProv[] = sys.listarActividadesProveedor(correo);
+                DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(arregloActsProv);
+                comboboxActividad.setModel(model);
+            }
+
+            DefaultTableModel tableModel = (DefaultTableModel) jTable_info.getModel();
+            DefaultTableModel actividadesModel = (DefaultTableModel) jTable_actividades.getModel();
+            DefaultTableModel salidasModel = (DefaultTableModel) jTable_salidas.getModel();
+
+            // Elimina las filas existentes de las tablas antes de llenarlas nuevamente
+            tableModel.setRowCount(0);
+            actividadesModel.setRowCount(0);
+            salidasModel.setRowCount(0);
+
+            int i = 0;
+            if (usr.getTipo().equals("Turista")) {
+                String[] arreglo = sys.obtenerSalidasInscritasTurista(correo);
+                DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(arreglo);
+                DefaultComboBoxModel<String> modelVacio = new DefaultComboBoxModel<>(new String[0]);
+                comboboxActividad.setModel(modelVacio);
+                comboboxSalida.setModel(model);
+            }
+
+            if (usr != null) {
+                // Llenar la información básica del usuario
+                if (usr.getTipo().equals("Proveedor")) {
+                    llenarInformacionBasicaProveedor(usr, tableModel);
+                } else if (usr.getTipo().equals("Turista")) {
+                    llenarInformacionBasicaTurista(usr, tableModel);
+                }
+                mostrarImagenPerfil(usr.getImagenP());
+            }
+        } catch (UsuarioNoExisteException ex) {
+
+        }
+    }
+
+    /*
+    private void comboboxActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActividadActionPerformed
         DefaultTableModel actividadesModel = (DefaultTableModel) jTable_actividades.getModel();
         DefaultTableModel salidasModel = (DefaultTableModel) jTable_salidas.getModel();
         actividadesModel.setRowCount(0);
         salidasModel.setRowCount(0);
         Usuario usuario = Usuario.obtenerUsuario(correo);
+        
+        
         int i = 0;
 
         if (usuario != null) {
@@ -271,28 +331,72 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
             mostrarImagenPerfil(usuario.getImagenPerfil());
         }
 
+        
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboboxActividadActionPerformed
+*/
+    private void comboboxActividadActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            DefaultTableModel actividadesModel = (DefaultTableModel) jTable_actividades.getModel();
+            DefaultTableModel salidasModel = (DefaultTableModel) jTable_salidas.getModel();
+            actividadesModel.setRowCount(0);
+            salidasModel.setRowCount(0);
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+            usr = sys.verInfoUsuario(correo);
+
+            if (usr.getCorreo() != null) {
+                if (usr.getTipo().equals("Turista")) {
+
+                    //arreglo = new String[turista.getSalidasInscritas().size()];
+                    arreglo = sys.obtenerSalidasInscritasTurista(correo);
+
+                }
+
+                if (usr.getTipo().equals("Proveedor")) {
+
+                    arreglo2 = sys.listarSalidasActividad(comboboxActividad.getSelectedItem().toString());
+                }
+            }
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(arreglo2);
+            comboboxSalida.setModel(model);
+
+            if (usr.getCorreo() != null) {
+                if (usr.getTipo().equals("Proveedor")) {
+                    // Si es un proveedor, llenar las actividades turísticas
+                    llenarTablaActividadesProveedor(usr.getCorreo(), actividadesModel);
+                } else if (usr.getTipo().equals("Turista")) {
+                    // Si es un turista, llenar las salidas a las que se inscribió
+                    llenarTablaSalidasInscritasTurista(usr.getCorreo(), salidasModel);
+                }
+                mostrarImagenPerfil(usr.getImagenP());
+            }
+        } catch (UsuarioNoExisteException ex) {
+
+        }
+
+    }
+
+
+    private void comboboxSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxSalidaActionPerformed
         DefaultTableModel actividadesModel = (DefaultTableModel) jTable_actividades.getModel();
         DefaultTableModel salidasModel = (DefaultTableModel) jTable_salidas.getModel();
         actividadesModel.setRowCount(0);
         salidasModel.setRowCount(0);
-        Usuario usuario = Usuario.obtenerUsuario(correo);
+        // Usuario otra vez para que???
+        //Usuario usuario = Usuario.obtenerUsuario(correo);
 
-        if (usuario != null) {
-            if (usuario instanceof Proveedor) {
+        if (usr != null) {
+            if (usr.getTipo().equals("Proveedor")) {
                 // Si es un proveedor, llenar las actividades turísticas y salidas asociadas
-                llenarTablaActividadesProveedor((Proveedor) usuario, actividadesModel);
-                llenarTablaSalidasAsociadasProveedor((Proveedor) usuario, salidasModel);
-            } else if (usuario instanceof Turista) {
+                llenarTablaActividadesProveedor(usr.getCorreo(), actividadesModel);
+                llenarTablaSalidasAsociadasProveedor(usr.getCorreo(), salidasModel);
+            } else if (usr.getTipo().equals("Turista")) {
                 // Si es un turista, llenar las salidas a las que se inscribió
-                llenarTablaSalidasInscritasTurista((Turista) usuario, salidasModel);
+                llenarTablaSalidasInscritasTurista(usr.getCorreo(), salidasModel);
             }
-            mostrarImagenPerfil(usuario.getImagenPerfil());
+            mostrarImagenPerfil(usr.getImagenP());
         }
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_comboboxSalidaActionPerformed
 
     private void mostrarImagenPerfil(String rutaImagenPerfil) {
         if (rutaImagenPerfil != null && !rutaImagenPerfil.isEmpty()) {
@@ -304,32 +408,30 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         }
     }
 
-// Función para llenar la información básica de un proveedor en la tabla
-    private void llenarInformacionBasicaProveedor(Proveedor proveedor, DefaultTableModel tableModel) {
+    private void llenarInformacionBasicaProveedor(DataUsuario dataUsuario, DefaultTableModel tableModel) {
         Object[] rowData = {
-            proveedor.getNick(),
-            proveedor.getNombre(),
-            proveedor.getApellido(),
-            proveedor.getCorreo(),
-            proveedor.getFecnac(),
-            "Proveedor",
+            dataUsuario.getNick(),
+            dataUsuario.getNombre(),
+            dataUsuario.getApellido(),
+            dataUsuario.getCorreo(),
+            dataUsuario.getFecNac(),
+            dataUsuario.getTipo(), // Utilizamos el campo "tipo" de DataUsuario
             null, // Nacionalidad no aplicable para proveedores
-            proveedor.getDescripcion(),
-            proveedor.getWeb()
+            dataUsuario.getDescripcion(),
+            dataUsuario.GetWeb()
         };
         tableModel.addRow(rowData);
     }
 
-// Función para llenar la información básica de un turista en la tabla
-    private void llenarInformacionBasicaTurista(Turista turista, DefaultTableModel tableModel) {
+    private void llenarInformacionBasicaTurista(DataUsuario dataUsuario, DefaultTableModel tableModel) {
         Object[] rowData = {
-            turista.getNick(),
-            turista.getNombre(),
-            turista.getApellido(),
-            turista.getCorreo(),
-            turista.getFecnac(),
-            "Turista",
-            turista.getNacionalidad(),
+            dataUsuario.getNick(),
+            dataUsuario.getNombre(),
+            dataUsuario.getApellido(),
+            dataUsuario.getCorreo(),
+            dataUsuario.getFecNac(),
+            dataUsuario.getTipo(), // Utilizamos el campo "tipo" de DataUsuario
+            dataUsuario.getNacionalidad(),
             null, // Descripción no aplicable para turistas
             null // Sitio web no aplicable para turistas
         };
@@ -337,9 +439,10 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     }
 
 // Agrega lógica para llenar la tabla de actividades turísticas del proveedor
-    private void llenarTablaActividadesProveedor(Proveedor proveedor, DefaultTableModel actividadesModel) {
-        for (ActividadTuristica actividad : proveedor.getActTuristica()) {
-            if (jComboBox1.getSelectedItem() == actividad.getNombre()) {
+    private void llenarTablaActividadesProveedor(String correoProveedor, DefaultTableModel actividadesModel) {
+        DataActividad[] acts = sys.dataActividadesProveedor(correoProveedor);
+        for (DataActividad actividad : acts) {
+            if (comboboxActividad.getSelectedItem() == actividad.getNombre()) {
                 Object[] actividadData = {
                     actividad.getNombre(),
                     actividad.getDescripcion(),
@@ -352,25 +455,28 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     }
 
 // Agrega lógica para llenar la tabla de salidas asociadas al proveedor
-    private void llenarTablaSalidasAsociadasProveedor(Proveedor proveedor, DefaultTableModel salidasModel) {
-        for (SalidasTuristicas salida : proveedor.getSalidasAsociadas()) {
-            if (jComboBox2.getSelectedItem() == salida.getNombreSalida()) {
-                Object[] salidaData = {
-                    salida.getNombreSalida(),
-                    salida.getFechaAlta(),
-                    salida.getFechaSalida(),
-                    salida.getCantidadMaximaTuristas(),
-                    salida.getCantInscritos()
-                };
-                salidasModel.addRow(salidaData);
-            }
+    private void llenarTablaSalidasAsociadasProveedor(String correoProveedor, DefaultTableModel salidasModel) {
+        DataSalida[] salidasProveedor = sys.dataSalidasActividadesProveedor(correoProveedor);
+        String nombreSalida = comboboxSalida.getSelectedItem().toString();
+        DataSalida salida = sys.datosSalida(nombreSalida, "", nombreSalida);
+
+        if (comboboxSalida.getSelectedItem() == salida.getNombreSalida()) {
+            Object[] salidaData = {
+                salida.getNombreSalida(),
+                salida.getFechaAlta(),
+                salida.getFechaSalida(),
+                salida.getCantidadMaximaTuristas(),
+                salida.getCantInscritos()
+            };
+            salidasModel.addRow(salidaData);
         }
     }
 
 // Agrega lógica para llenar la tabla de salidas a las que se inscribió el turista
-    private void llenarTablaSalidasInscritasTurista(Turista turista, DefaultTableModel salidasModel) {
-        for (SalidasTuristicas salida : turista.getSalidasInscritas()) {
-            if (jComboBox2.getSelectedItem() == salida.getNombreSalida()) {
+    private void llenarTablaSalidasInscritasTurista(String correoTurista, DefaultTableModel salidasModel) {
+        DataSalida salidasdata[] = sys.DataSalidasTurista(correo);
+        for (DataSalida salida : salidasdata) {
+            if (comboboxSalida.getSelectedItem() == salida.getNombreSalida()) {
                 Object[] salidaData = {
                     salida.getNombreSalida(),
                     salida.getFechaAlta(),
@@ -385,8 +491,8 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> comboboxActividad;
+    private javax.swing.JComboBox<String> comboboxSalida;
     private javax.swing.JComboBox<String> jComboBox_correo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -20,6 +20,9 @@ public class DataUsuario {
     private String nacionalidad;
     private String web;
     private String descripcion;
+    private String imagenP;
+    
+   
 /*
     public DataUsuario() {
         this.setNombre(new String());
@@ -38,11 +41,27 @@ public class DataUsuario {
         this.setWeb(web);
         this.setDescripcion(descripcion);
     }
+        public DataUsuario(String nick,String nombre, String apellido, String correo, LocalDate fecNac, String nacionalidad, String web, String descripcion, String imagenP) {
+        this.setNombre(nombre);
+        this.setApellido(apellido);
+        this.setCorreo(correo);
+        this.setFecNac(fecNac);
+        this.setNick(nick);
+        this.setNacionalidad(nacionalidad);
+        this.setWeb(web);
+        this.setDescripcion(descripcion);
+        this.setImagenP(imagenP);
+    }
 
     public String getTipo() {
         return tipo;
     }
-
+    public String getImagenP(){
+        return imagenP;
+    }
+    public void setImagenP(String imagenP){
+        this.imagenP=imagenP;
+    }
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
@@ -72,7 +91,7 @@ public class DataUsuario {
     }
     
     public String getDescripcion() {
-        return correo;
+        return descripcion;
     }
     
     public String getFecNac(){
@@ -116,4 +135,7 @@ public class DataUsuario {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+    
+    
+    
 }
