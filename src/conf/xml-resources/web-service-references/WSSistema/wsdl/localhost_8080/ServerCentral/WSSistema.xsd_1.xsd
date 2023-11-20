@@ -1,0 +1,1385 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (https://github.com/eclipse-ee4j/metro-jax-ws). RI's version is Eclipse Metro/2.4.8 (RELEASE-2.4.8-e044505; 2022-01-04T13:29:23+0000) JAXWS-RI/2.3.5 JAXWS-API/2.3.3 JAXB-RI/2.3.5 JAXB-API/2.3.3 git-revision#e044505. --><xs:schema xmlns:tns="http://webservice/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://webservice/">
+
+<xs:element name="AltaActividadTuristica" type="tns:AltaActividadTuristica"/>
+
+<xs:element name="AltaActividadTuristicaResponse" type="tns:AltaActividadTuristicaResponse"/>
+
+<xs:element name="AltaSalidaTuristicaDepto" type="tns:AltaSalidaTuristicaDepto"/>
+
+<xs:element name="AltaSalidaTuristicaDeptoResponse" type="tns:AltaSalidaTuristicaDeptoResponse"/>
+
+<xs:element name="ConsultaActTuristica" type="tns:ConsultaActTuristica"/>
+
+<xs:element name="ConsultaActTuristicaResponse" type="tns:ConsultaActTuristicaResponse"/>
+
+<xs:element name="InscribirTurAPaquete" type="tns:InscribirTurAPaquete"/>
+
+<xs:element name="InscribirTurAPaqueteResponse" type="tns:InscribirTurAPaqueteResponse"/>
+
+<xs:element name="TurConPaqFromBD" type="tns:TurConPaqFromBD"/>
+
+<xs:element name="TurConPaqFromBDResponse" type="tns:TurConPaqFromBDResponse"/>
+
+<xs:element name="aumentarUsosCompraPaq" type="tns:aumentarUsosCompraPaq"/>
+
+<xs:element name="aumentarUsosCompraPaqResponse" type="tns:aumentarUsosCompraPaqResponse"/>
+
+<xs:element name="aumentarVisitasActividad" type="tns:aumentarVisitasActividad"/>
+
+<xs:element name="aumentarVisitasActividadResponse" type="tns:aumentarVisitasActividadResponse"/>
+
+<xs:element name="aumentarVisitasSalida" type="tns:aumentarVisitasSalida"/>
+
+<xs:element name="aumentarVisitasSalidaResponse" type="tns:aumentarVisitasSalidaResponse"/>
+
+<xs:element name="buscarActividades" type="tns:buscarActividades"/>
+
+<xs:element name="buscarActividadesResponse" type="tns:buscarActividadesResponse"/>
+
+<xs:element name="buscarPaquetes" type="tns:buscarPaquetes"/>
+
+<xs:element name="buscarPaquetesResponse" type="tns:buscarPaquetesResponse"/>
+
+<xs:element name="confirmarCreacionPaquete" type="tns:confirmarCreacionPaquete"/>
+
+<xs:element name="confirmarCreacionPaqueteResponse" type="tns:confirmarCreacionPaqueteResponse"/>
+
+<xs:element name="confirmarInscripcion" type="tns:confirmarInscripcion"/>
+
+<xs:element name="confirmarInscripcionResponse" type="tns:confirmarInscripcionResponse"/>
+
+<xs:element name="dejarDeSeguirUsuario" type="tns:dejarDeSeguirUsuario"/>
+
+<xs:element name="dejarDeSeguirUsuarioResponse" type="tns:dejarDeSeguirUsuarioResponse"/>
+
+<xs:element name="estaInscritoTuristaSalida" type="tns:estaInscritoTuristaSalida"/>
+
+<xs:element name="estaInscritoTuristaSalidaResponse" type="tns:estaInscritoTuristaSalidaResponse"/>
+
+<xs:element name="estaSeguidofromDB" type="tns:estaSeguidofromDB"/>
+
+<xs:element name="estaSeguidofromDBResponse" type="tns:estaSeguidofromDBResponse"/>
+
+<xs:element name="excedeLimiteInscripcion" type="tns:excedeLimiteInscripcion"/>
+
+<xs:element name="excedeLimiteInscripcionResponse" type="tns:excedeLimiteInscripcionResponse"/>
+
+<xs:element name="finalizarActividad" type="tns:finalizarActividad"/>
+
+<xs:element name="finalizarActividadResponse" type="tns:finalizarActividadResponse"/>
+
+<xs:element name="getActsFavoritasUsr" type="tns:getActsFavoritasUsr"/>
+
+<xs:element name="getActsFavoritasUsrResponse" type="tns:getActsFavoritasUsrResponse"/>
+
+<xs:element name="getActsProveedorBD" type="tns:getActsProveedorBD"/>
+
+<xs:element name="getActsProveedorBDResponse" type="tns:getActsProveedorBDResponse"/>
+
+<xs:element name="getAllActsFromBD" type="tns:getAllActsFromBD"/>
+
+<xs:element name="getAllActsFromBDResponse" type="tns:getAllActsFromBDResponse"/>
+
+<xs:element name="getAllActsFromPaqFromBD" type="tns:getAllActsFromPaqFromBD"/>
+
+<xs:element name="getAllActsFromPaqFromBDResponse" type="tns:getAllActsFromPaqFromBDResponse"/>
+
+<xs:element name="getAllActsdeCatFromBD" type="tns:getAllActsdeCatFromBD"/>
+
+<xs:element name="getAllActsdeCatFromBDResponse" type="tns:getAllActsdeCatFromBDResponse"/>
+
+<xs:element name="getAllActsdeDepFromBD" type="tns:getAllActsdeDepFromBD"/>
+
+<xs:element name="getAllActsdeDepFromBDResponse" type="tns:getAllActsdeDepFromBDResponse"/>
+
+<xs:element name="getAllCatFromPaqFromBD" type="tns:getAllCatFromPaqFromBD"/>
+
+<xs:element name="getAllCatFromPaqFromBDResponse" type="tns:getAllCatFromPaqFromBDResponse"/>
+
+<xs:element name="getAllCatsFromBD" type="tns:getAllCatsFromBD"/>
+
+<xs:element name="getAllCatsFromBDResponse" type="tns:getAllCatsFromBDResponse"/>
+
+<xs:element name="getAllCatsdeActFromBD" type="tns:getAllCatsdeActFromBD"/>
+
+<xs:element name="getAllCatsdeActFromBDResponse" type="tns:getAllCatsdeActFromBDResponse"/>
+
+<xs:element name="getAllDepFromBD" type="tns:getAllDepFromBD"/>
+
+<xs:element name="getAllDepFromBDResponse" type="tns:getAllDepFromBDResponse"/>
+
+<xs:element name="getAllPaqsConActFromBD" type="tns:getAllPaqsConActFromBD"/>
+
+<xs:element name="getAllPaqsConActFromBDResponse" type="tns:getAllPaqsConActFromBDResponse"/>
+
+<xs:element name="getAllPaqsFromBD" type="tns:getAllPaqsFromBD"/>
+
+<xs:element name="getAllPaqsFromBDResponse" type="tns:getAllPaqsFromBDResponse"/>
+
+<xs:element name="getAllPaqsdeActFromBD" type="tns:getAllPaqsdeActFromBD"/>
+
+<xs:element name="getAllPaqsdeActFromBDResponse" type="tns:getAllPaqsdeActFromBDResponse"/>
+
+<xs:element name="getAllSaldeActFromBD" type="tns:getAllSaldeActFromBD"/>
+
+<xs:element name="getAllSaldeActFromBDResponse" type="tns:getAllSaldeActFromBDResponse"/>
+
+<xs:element name="getFecNacUsr" type="tns:getFecNacUsr"/>
+
+<xs:element name="getFecNacUsrResponse" type="tns:getFecNacUsrResponse"/>
+
+<xs:element name="getFechaAltaActividad" type="tns:getFechaAltaActividad"/>
+
+<xs:element name="getFechaAltaActividadResponse" type="tns:getFechaAltaActividadResponse"/>
+
+<xs:element name="getFechaAltaPaquete" type="tns:getFechaAltaPaquete"/>
+
+<xs:element name="getFechaAltaPaqueteResponse" type="tns:getFechaAltaPaqueteResponse"/>
+
+<xs:element name="getFechaAltaSalida" type="tns:getFechaAltaSalida"/>
+
+<xs:element name="getFechaAltaSalidaResponse" type="tns:getFechaAltaSalidaResponse"/>
+
+<xs:element name="getFechaInscripcionGeneral" type="tns:getFechaInscripcionGeneral"/>
+
+<xs:element name="getFechaInscripcionGeneralResponse" type="tns:getFechaInscripcionGeneralResponse"/>
+
+<xs:element name="getFechaInscripcionPaquete" type="tns:getFechaInscripcionPaquete"/>
+
+<xs:element name="getFechaInscripcionPaqueteResponse" type="tns:getFechaInscripcionPaqueteResponse"/>
+
+<xs:element name="getFechaSalida" type="tns:getFechaSalida"/>
+
+<xs:element name="getFechaSalidaResponse" type="tns:getFechaSalidaResponse"/>
+
+<xs:element name="getHoraSalida" type="tns:getHoraSalida"/>
+
+<xs:element name="getHoraSalidaResponse" type="tns:getHoraSalidaResponse"/>
+
+<xs:element name="getObjectsFromDB" type="tns:getObjectsFromDB"/>
+
+<xs:element name="getObjectsFromDBResponse" type="tns:getObjectsFromDBResponse"/>
+
+<xs:element name="getPaqFromBD" type="tns:getPaqFromBD"/>
+
+<xs:element name="getPaqFromBDResponse" type="tns:getPaqFromBDResponse"/>
+
+<xs:element name="getSalidaByNombre" type="tns:getSalidaByNombre"/>
+
+<xs:element name="getSalidaByNombreResponse" type="tns:getSalidaByNombreResponse"/>
+
+<xs:element name="getSalidaFromBD" type="tns:getSalidaFromBD"/>
+
+<xs:element name="getSalidaFromBDResponse" type="tns:getSalidaFromBDResponse"/>
+
+<xs:element name="getSeguidoresBD" type="tns:getSeguidoresBD"/>
+
+<xs:element name="getSeguidoresBDResponse" type="tns:getSeguidoresBDResponse"/>
+
+<xs:element name="getSeguidosBD" type="tns:getSeguidosBD"/>
+
+<xs:element name="getSeguidosBDResponse" type="tns:getSeguidosBDResponse"/>
+
+<xs:element name="getTipo" type="tns:getTipo"/>
+
+<xs:element name="getTipoResponse" type="tns:getTipoResponse"/>
+
+<xs:element name="getTuristaDB" type="tns:getTuristaDB"/>
+
+<xs:element name="getTuristaDBResponse" type="tns:getTuristaDBResponse"/>
+
+<xs:element name="getUsuarioDB" type="tns:getUsuarioDB"/>
+
+<xs:element name="getUsuarioDBResponse" type="tns:getUsuarioDBResponse"/>
+
+<xs:element name="getUsuarios" type="tns:getUsuarios"/>
+
+<xs:element name="getUsuariosResponse" type="tns:getUsuariosResponse"/>
+
+<xs:element name="getVencimientoInscripcionPaquete" type="tns:getVencimientoInscripcionPaquete"/>
+
+<xs:element name="getVencimientoInscripcionPaqueteResponse" type="tns:getVencimientoInscripcionPaqueteResponse"/>
+
+<xs:element name="hello" type="tns:hello"/>
+
+<xs:element name="helloResponse" type="tns:helloResponse"/>
+
+<xs:element name="infoActividad" type="tns:infoActividad"/>
+
+<xs:element name="infoActividadResponse" type="tns:infoActividadResponse"/>
+
+<xs:element name="infoPaquete" type="tns:infoPaquete"/>
+
+<xs:element name="infoPaqueteResponse" type="tns:infoPaqueteResponse"/>
+
+<xs:element name="inscripcionSalida" type="tns:inscripcionSalida"/>
+
+<xs:element name="inscripcionSalidaResponse" type="tns:inscripcionSalidaResponse"/>
+
+<xs:element name="listarActividadesConfirmadasDeptoArreglo" type="tns:listarActividadesConfirmadasDeptoArreglo"/>
+
+<xs:element name="listarActividadesConfirmadasDeptoArregloResponse" type="tns:listarActividadesConfirmadasDeptoArregloResponse"/>
+
+<xs:element name="listarDepartamentos" type="tns:listarDepartamentos"/>
+
+<xs:element name="listarDepartamentosResponse" type="tns:listarDepartamentosResponse"/>
+
+<xs:element name="listarPaqInscritoTurContieneAct" type="tns:listarPaqInscritoTurContieneAct"/>
+
+<xs:element name="listarPaqInscritoTurContieneActResponse" type="tns:listarPaqInscritoTurContieneActResponse"/>
+
+<xs:element name="mergeInscrPaq" type="tns:mergeInscrPaq"/>
+
+<xs:element name="mergeInscrPaqResponse" type="tns:mergeInscrPaqResponse"/>
+
+<xs:element name="modificarDatosUsuario" type="tns:modificarDatosUsuario"/>
+
+<xs:element name="modificarDatosUsuarioResponse" type="tns:modificarDatosUsuarioResponse"/>
+
+<xs:element name="obtenerSalidasInscritasTurista" type="tns:obtenerSalidasInscritasTurista"/>
+
+<xs:element name="obtenerSalidasInscritasTuristaResponse" type="tns:obtenerSalidasInscritasTuristaResponse"/>
+
+<xs:element name="quedanPuestosPaqAct" type="tns:quedanPuestosPaqAct"/>
+
+<xs:element name="quedanPuestosPaqActResponse" type="tns:quedanPuestosPaqActResponse"/>
+
+<xs:element name="registrarUsuario" type="tns:registrarUsuario"/>
+
+<xs:element name="registrarUsuarioResponse" type="tns:registrarUsuarioResponse"/>
+
+<xs:element name="seguirUsuario" type="tns:seguirUsuario"/>
+
+<xs:element name="seguirUsuarioResponse" type="tns:seguirUsuarioResponse"/>
+
+<xs:element name="selectActFromDB" type="tns:selectActFromDB"/>
+
+<xs:element name="selectActFromDBResponse" type="tns:selectActFromDBResponse"/>
+
+<xs:element name="selectActividad" type="tns:selectActividad"/>
+
+<xs:element name="selectActividadResponse" type="tns:selectActividadResponse"/>
+
+<xs:element name="selectCatFromDB" type="tns:selectCatFromDB"/>
+
+<xs:element name="selectCatFromDBResponse" type="tns:selectCatFromDBResponse"/>
+
+<xs:element name="selectDepartamento" type="tns:selectDepartamento"/>
+
+<xs:element name="selectDepartamentoResponse" type="tns:selectDepartamentoResponse"/>
+
+<xs:element name="selectPaquete" type="tns:selectPaquete"/>
+
+<xs:element name="selectPaqueteResponse" type="tns:selectPaqueteResponse"/>
+
+<xs:element name="tieneSalidasActivasAct" type="tns:tieneSalidasActivasAct"/>
+
+<xs:element name="tieneSalidasActivasActResponse" type="tns:tieneSalidasActivasActResponse"/>
+
+<xs:element name="toggleActFavorita" type="tns:toggleActFavorita"/>
+
+<xs:element name="toggleActFavoritaResponse" type="tns:toggleActFavoritaResponse"/>
+
+<xs:element name="validarCredenciales" type="tns:validarCredenciales"/>
+
+<xs:element name="validarCredencialesResponse" type="tns:validarCredencialesResponse"/>
+
+<xs:element name="verInfoUsuario" type="tns:verInfoUsuario"/>
+
+<xs:element name="verInfoUsuarioNick" type="tns:verInfoUsuarioNick"/>
+
+<xs:element name="verInfoUsuarioNickResponse" type="tns:verInfoUsuarioNickResponse"/>
+
+<xs:element name="verInfoUsuarioResponse" type="tns:verInfoUsuarioResponse"/>
+
+<xs:complexType name="getAllActsFromBD">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllActsFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actividadTuristica" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actividadTuristica">
+<xs:sequence>
+<xs:element name="cantVisitas" type="xs:long"/>
+<xs:element name="categorias" type="tns:categoria" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="costoPorTurista" type="xs:double"/>
+<xs:element name="departamento" type="tns:departamento" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="duracionHoras" type="xs:int"/>
+<xs:element name="estado" type="tns:estadoActividad" minOccurs="0"/>
+<xs:element name="fechaAlta" type="tns:localDate" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="proveedor" type="tns:proveedor" minOccurs="0"/>
+<xs:element name="urlVideo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="categoria">
+<xs:sequence>
+<xs:element name="nombreCat" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="departamento">
+<xs:sequence>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreDepartamento" type="xs:string" minOccurs="0"/>
+<xs:element name="url" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="localDate" final="extension restriction">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="proveedor">
+<xs:complexContent>
+<xs:extension base="tns:usuario">
+<xs:sequence>
+<xs:element name="departamento" type="tns:departamento" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="web" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="usuario">
+<xs:sequence>
+<xs:element name="apellido" type="xs:string" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaNacimiento" type="tns:localDate" minOccurs="0"/>
+<xs:element name="imagenPerfil" type="xs:string" minOccurs="0"/>
+<xs:element name="nick" type="xs:string" minOccurs="0"/>
+<xs:element name="nickname" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="seguidos" type="tns:usuario" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllCatsdeActFromBD">
+<xs:sequence>
+<xs:element name="act" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllCatsdeActFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectPaquete">
+<xs:sequence>
+<xs:element name="nombre_paquete" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectPaqueteResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:paquete" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="paquete">
+<xs:sequence>
+<xs:element name="actTuristica" type="tns:actividadTuristica" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="alta" type="tns:localDate" minOccurs="0"/>
+<xs:element name="categorias" type="tns:categoria" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="descri" type="xs:string" minOccurs="0"/>
+<xs:element name="descuento" type="xs:int"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="nombrePaquete" type="xs:string" minOccurs="0"/>
+<xs:element name="validez" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoUsuarioNick">
+<xs:sequence>
+<xs:element name="nick" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoUsuarioNickResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataUsuario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataUsuario">
+<xs:sequence>
+<xs:element name="apellido" type="xs:string" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="fecNac" type="tns:localDate" minOccurs="0"/>
+<xs:element name="imagenP" type="xs:string" minOccurs="0"/>
+<xs:element name="nacionalidad" type="xs:string" minOccurs="0"/>
+<xs:element name="nick" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+<xs:element name="web" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPaqFromBD">
+<xs:sequence>
+<xs:element name="nombrePaquete" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPaqFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:paquete" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarPaqInscritoTurContieneAct">
+<xs:sequence>
+<xs:element name="mailTurista" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreActividad" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarPaqInscritoTurContieneActResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aumentarUsosCompraPaq">
+<xs:sequence>
+<xs:element name="cantidad" type="xs:int"/>
+<xs:element name="mailTur" type="xs:string" minOccurs="0"/>
+<xs:element name="nombrePaq" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aumentarUsosCompraPaqResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getVencimientoInscripcionPaquete">
+<xs:sequence>
+<xs:element name="inscr" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVencimientoInscripcionPaqueteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaAltaPaquete">
+<xs:sequence>
+<xs:element name="nombrePaq" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaAltaPaqueteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="toggleActFavorita">
+<xs:sequence>
+<xs:element name="correoUsr" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreAct" type="xs:string" minOccurs="0"/>
+<xs:element name="favorito" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="toggleActFavoritaResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="ConsultaActTuristica">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreAct" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ConsultaActTuristicaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataActividad" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataActividad">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="costoPorTurista" type="xs:double"/>
+<xs:element name="departamento" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="duracionHoras" type="xs:int"/>
+<xs:element name="fechaAlta" type="tns:localDate" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="proveedor" type="xs:string" minOccurs="0"/>
+<xs:element name="salidasTur" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="urlVideo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaAltaActividad">
+<xs:sequence>
+<xs:element name="nombreAct" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaAltaActividadResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaInscripcionGeneral">
+<xs:sequence>
+<xs:element name="inscr" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaInscripcionGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllDepFromBD">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllDepFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:departamento" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inscripcionSalida">
+<xs:sequence>
+<xs:element name="mailTurista" type="xs:string" minOccurs="0"/>
+<xs:element name="idSalida" type="xs:string" minOccurs="0"/>
+<xs:element name="cantTurista" type="xs:int"/>
+<xs:element name="fechaInscr" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inscripcionSalidaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllActsdeDepFromBD">
+<xs:sequence>
+<xs:element name="depto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllActsdeDepFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="modificarDatosUsuario">
+<xs:sequence>
+<xs:element name="mail" type="xs:string" minOccurs="0"/>
+<xs:element name="nuevoNombre" type="xs:string" minOccurs="0"/>
+<xs:element name="nuevoApellido" type="xs:string" minOccurs="0"/>
+<xs:element name="nuevaFechaNacimiento" type="xs:string" minOccurs="0"/>
+<xs:element name="imagenP" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="modificarDatosUsuarioResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getFechaInscripcionPaquete">
+<xs:sequence>
+<xs:element name="inscr" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaInscripcionPaqueteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tieneSalidasActivasAct">
+<xs:sequence>
+<xs:element name="nombreAct" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tieneSalidasActivasActResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarActividadesConfirmadasDeptoArreglo">
+<xs:sequence>
+<xs:element name="depto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarActividadesConfirmadasDeptoArregloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="confirmarInscripcion">
+<xs:sequence>
+<xs:element name="cantTurista" type="xs:int"/>
+<xs:element name="costogral" type="xs:double"/>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="confirmarInscripcionResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="estaInscritoTuristaSalida">
+<xs:sequence>
+<xs:element name="mailTurista" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreSalida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="estaInscritoTuristaSalidaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectActividad">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectActividadResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actividadTuristica" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AltaActividadTuristica">
+<xs:sequence>
+<xs:element name="correoProveedor" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreAct" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="duracion" type="xs:int" minOccurs="0"/>
+<xs:element name="costo" type="xs:double"/>
+<xs:element name="depto" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaA" type="xs:string" minOccurs="0"/>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="eleccionesCategoria" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="urlVideo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AltaActividadTuristicaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaAltaSalida">
+<xs:sequence>
+<xs:element name="nombreSalida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaAltaSalidaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHoraSalida">
+<xs:sequence>
+<xs:element name="nombreSalida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHoraSalidaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectActFromDB">
+<xs:sequence>
+<xs:element name="nombreact" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectActFromDBResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actividadTuristica" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUsuarioDB">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUsuarioDBResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:usuario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaSalida">
+<xs:sequence>
+<xs:element name="nombreSalida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFechaSalidaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTuristaDB">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTuristaDBResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:turista" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="turista">
+<xs:complexContent>
+<xs:extension base="tns:usuario">
+<xs:sequence>
+<xs:element name="actsFavoritas" type="tns:actividadTuristica" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="inscripciongeneral" type="tns:inscripcionGeneral" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="inscripcionpaquete" type="tns:inscripcionPaquete" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="nacionalidad" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="inscripcionGeneral">
+<xs:sequence>
+<xs:element name="cantidad" type="xs:int"/>
+<xs:element name="costoGeneral" type="xs:double"/>
+<xs:element name="fechaCompra" type="tns:localDate" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="salida" type="tns:salidasTuristicas" minOccurs="0"/>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="salidasTuristicas">
+<xs:sequence>
+<xs:element name="actividadAsociada" type="tns:actividadTuristica" minOccurs="0"/>
+<xs:element name="cantInscritos" type="xs:int"/>
+<xs:element name="cantVisitas" type="xs:long"/>
+<xs:element name="cantidadMaximaTuristas" type="xs:int"/>
+<xs:element name="fechaAlta" type="tns:localDate" minOccurs="0"/>
+<xs:element name="fechaSalida" type="tns:localDate" minOccurs="0"/>
+<xs:element name="hora" type="tns:localTime" minOccurs="0"/>
+<xs:element name="imagenSalida" type="xs:string" minOccurs="0"/>
+<xs:element name="lugar" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreSalida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="localTime" final="extension restriction">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="inscripcionPaquete">
+<xs:sequence>
+<xs:element name="cantidad" type="xs:int"/>
+<xs:element name="costoPaquete" type="xs:float"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaCompra" type="tns:localDate" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="mapaInscr">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="key" minOccurs="0" type="xs:string"/>
+<xs:element name="value" minOccurs="0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="paquete" type="tns:paquete" minOccurs="0"/>
+<xs:element name="vencimiento" type="tns:localDate" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPaqsdeActFromBD">
+<xs:sequence>
+<xs:element name="act" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPaqsdeActFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPaqsConActFromBD">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllPaqsConActFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFecNacUsr">
+<xs:sequence>
+<xs:element name="mailUsr" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFecNacUsrResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllActsdeCatFromBD">
+<xs:sequence>
+<xs:element name="categoria" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllActsdeCatFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoUsuario">
+<xs:sequence>
+<xs:element name="mail" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataUsuario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPaqsFromBD">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllPaqsFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:paquete" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllSaldeActFromBD">
+<xs:sequence>
+<xs:element name="act" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllSaldeActFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getActsProveedorBD">
+<xs:sequence>
+<xs:element name="correoP" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getActsProveedorBDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actividadTuristica" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TurConPaqFromBD">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="nombrepaq" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TurConPaqFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerSalidasInscritasTurista">
+<xs:sequence>
+<xs:element name="correoTurista" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerSalidasInscritasTuristaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllCatsFromBD">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllCatsFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoria" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="estaSeguidofromDB">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+<xs:element name="usuarioSeguido" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="estaSeguidofromDBResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aumentarVisitasSalida">
+<xs:sequence>
+<xs:element name="salida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aumentarVisitasSalidaResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="confirmarCreacionPaquete">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="validez" type="xs:int"/>
+<xs:element name="descuento" type="xs:int"/>
+<xs:element name="alta" type="xs:string" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="confirmarCreacionPaqueteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSeguidosBD">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSeguidosBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarPaquetes">
+<xs:sequence>
+<xs:element name="texto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarPaquetesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:paquete" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="infoActividad">
+<xs:sequence>
+<xs:element name="nombreActividad" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="infoActividadResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataActividad" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="InscribirTurAPaquete">
+<xs:sequence>
+<xs:element name="nombreP1" type="xs:string" minOccurs="0"/>
+<xs:element name="email1" type="xs:string" minOccurs="0"/>
+<xs:element name="costoPaquete1" type="xs:float"/>
+<xs:element name="cantidad1" type="xs:int"/>
+<xs:element name="vencimiento1" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaCompra1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="InscribirTurAPaqueteResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getSeguidoresBD">
+<xs:sequence>
+<xs:element name="usuarioSeguido" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSeguidoresBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSalidaFromBD">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSalidaFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:salidasTuristicas" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUsuarios">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getUsuariosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataUsuario" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSalidaByNombre">
+<xs:sequence>
+<xs:element name="nombreSalida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSalidaByNombreResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:salidasTuristicas" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarCredenciales">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarCredencialesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllActsFromPaqFromBD">
+<xs:sequence>
+<xs:element name="paquete" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllActsFromPaqFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dejarDeSeguirUsuario">
+<xs:sequence>
+<xs:element name="usr" type="xs:string" minOccurs="0"/>
+<xs:element name="noseguir" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dejarDeSeguirUsuarioResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="mergeInscrPaq">
+<xs:sequence>
+<xs:element name="ins" type="tns:inscripcionPaquete" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="mergeInscrPaqResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="finalizarActividad">
+<xs:sequence>
+<xs:element name="nombreAct" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="finalizarActividadResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getObjectsFromDB">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getObjectsFromDBResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllCatFromPaqFromBD">
+<xs:sequence>
+<xs:element name="paquete" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllCatFromPaqFromBDResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="quedanPuestosPaqAct">
+<xs:sequence>
+<xs:element name="mailTur" type="xs:string" minOccurs="0"/>
+<xs:element name="nombrePaq" type="xs:string" minOccurs="0"/>
+<xs:element name="actividad" type="xs:string" minOccurs="0"/>
+<xs:element name="cantidad" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="quedanPuestosPaqActResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarDepartamentos">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listarDepartamentosResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarActividades">
+<xs:sequence>
+<xs:element name="texto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarActividadesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actividadTuristica" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTipo">
+<xs:sequence>
+<xs:element name="nick" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTipoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seguirUsuario">
+<xs:sequence>
+<xs:element name="usr" type="xs:string" minOccurs="0"/>
+<xs:element name="seguir" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seguirUsuarioResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="selectCatFromDB">
+<xs:sequence>
+<xs:element name="nombreact" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectCatFromDBResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoria" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarUsuario">
+<xs:sequence>
+<xs:element name="nick" type="xs:string" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="ap" type="xs:string" minOccurs="0"/>
+<xs:element name="mail" type="xs:string" minOccurs="0"/>
+<xs:element name="fecNac" type="xs:string" minOccurs="0"/>
+<xs:element name="tipoUsuario" type="xs:string" minOccurs="0"/>
+<xs:element name="nacionalidad" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="web" type="xs:string" minOccurs="0"/>
+<xs:element name="imagenPerfil" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registrarUsuarioResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="aumentarVisitasActividad">
+<xs:sequence>
+<xs:element name="actividad" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="aumentarVisitasActividadResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="AltaSalidaTuristicaDepto">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="lugar" type="xs:string" minOccurs="0"/>
+<xs:element name="cantidad" type="xs:int"/>
+<xs:element name="alta" type="xs:string" minOccurs="0"/>
+<xs:element name="fecSal" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreAct" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreDepto" type="xs:string" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="hora" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AltaSalidaTuristicaDeptoResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="infoPaquete">
+<xs:sequence>
+<xs:element name="nombrePaquete" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="infoPaqueteResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataPaquete" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataPaquete">
+<xs:sequence>
+<xs:element name="actTuristica" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="alta" type="tns:localDate" minOccurs="0"/>
+<xs:element name="descri" type="xs:string" minOccurs="0"/>
+<xs:element name="descuento" type="xs:int"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre_paquete" type="xs:string" minOccurs="0"/>
+<xs:element name="validez" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="excedeLimiteInscripcion">
+<xs:sequence>
+<xs:element name="nombreSalida" type="xs:string" minOccurs="0"/>
+<xs:element name="cantTurista" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="excedeLimiteInscripcionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectDepartamento">
+<xs:sequence>
+<xs:element name="nombreDepartamento" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectDepartamentoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:departamento" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getActsFavoritasUsr">
+<xs:sequence>
+<xs:element name="correoUsr" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getActsFavoritasUsrResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="estadoActividad">
+<xs:restriction base="xs:string">
+<xs:enumeration value="AGREGADA"/>
+<xs:enumeration value="CONFIRMADA"/>
+<xs:enumeration value="RECHAZADA"/>
+<xs:enumeration value="FINALIZADA"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

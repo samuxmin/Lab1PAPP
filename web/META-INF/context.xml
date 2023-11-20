@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/LABPAPP_WEB">
+  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="turismo" password="tecnologo" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/Turismo?zeroDateTimeBehavior=CONVERT_TO_NULL" username="tecnologo"/>
+  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="Turismo" password="tecnologo" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/Turismo?zeroDateTimeBehavior=CONVERT_TO_NULL" username="tecnologo"/>
+  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="tur" password="tecnologo" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/Turismo" username="tecnologo"/>
+  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="LABPAPP_WEB" password="tecnologo" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/Turismo" username="tecnologo"/>
+</Context>
